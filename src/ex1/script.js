@@ -40,9 +40,13 @@ function addTodo(event) {
 function deleteOrCompleteTask(event) {
     const item = event.target;
     if (item.classList[0] === "trash-button") {
-        item.parentElement.remove();
+        const todo = item.parentElement;
+        todo.classList.add("fall");
+        todo.addEventListener("transitionend", function () {
+            todo.remove();
+        });
     } else if (item.classList[0] === "complete-button") {
         const todo = item.parentElement;
-        todo.classList.toggle('completed')
+        todo.classList.toggle("completed");
     }
 }
