@@ -4,8 +4,8 @@ const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
 
 //Event listeners:
-// todoButton.addEventListener('click', addTodo)
 todoButton.onclick = addTodo;
+todoList.onclick = deleteOrCompleteTask;
 
 //Functions:
 
@@ -34,5 +34,15 @@ function addTodo(event) {
     todoDiv.appendChild(trashButton);
 
     todoList.appendChild(todoDiv);
-    todoInput.value = ""
+    todoInput.value = "";
+}
+
+function deleteOrCompleteTask(event) {
+    const item = event.target;
+    if (item.classList[0] === "trash-button") {
+        item.parentElement.remove();
+    } else if (item.classList[0] === "complete-button") {
+        const todo = item.parentElement;
+        todo.classList.toggle('completed')
+    }
 }

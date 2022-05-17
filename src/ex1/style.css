@@ -26,6 +26,7 @@ form input, form button {
     padding: 0.5rem;
     font-size: 2rem;
     border: none;
+    outline: none;
     background: white;
 }
 
@@ -92,4 +93,8 @@ form button:hover {
 
 .todo-item {
     padding: 0rem 0.5rem;
+}
+
+.fa-trash, .fa-check {
+    pointer-events: none;
 }
