@@ -18,24 +18,28 @@ body {
     border-radius: 10px;
 }
 
-header {
-    font-size: 1rem;
+h1 {
+    font-size: 2rem;
+    padding: 2rem 1rem;
 }
 
-header,
 form {
-    min-height: 20vh;
+    display: flex;    
+    flex-direction: column;
+}
+
+.input-container {
     display: flex;
-    
-    /* flex-direction: column; */
-    justify-content: center;
     align-items: center;
+    padding: 0rem 1rem;
+    justify-content: space-between;
 }
 
 form input,
 form button {
+    width: 100%;
     padding: 0.5rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
     border: 1px solid gray;
     border-radius: 3px;
     outline: none;
@@ -43,6 +47,7 @@ form button {
 }
 
 form button {
+    flex: 1;
     color: #8e49e8;
     background: white;
     cursor: pointer;
@@ -127,14 +132,15 @@ form button:hover {
 .custom-select {
     position: relative;
     margin: 0rem 1rem;
+    display: flex;
+    justify-content: end;
 }
 
 .custom-select select {
     background-color: white;
-    padding: 0.8rem;
     width: 13rem;
     border: none;
-    font-size: 1.5rem;
+    font-size: 1rem;
     appearance: none;
     outline: none;
     cursor: pointer;
@@ -148,9 +154,8 @@ form button:hover {
     right: 0;
     width: 2rem;
     height: 100%;
-    padding: 0 0.5rem;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1rem;
     line-height: 3.5rem;
     color: #8e49e8;
     background-color: white;
@@ -161,7 +166,3 @@ form button:hover {
     color: white;
     background-color: #8e49e8;
 }
-
-/* .custom-select select option {
-    padding: 10px;
-} */
