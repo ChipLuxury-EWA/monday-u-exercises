@@ -130,7 +130,7 @@ form button:hover {
 }
 
 .custom-select::before {
-    content: "\f149";
+    content: "\f0b0";
     font-family: FontAwesome;
     position: absolute;
     top: 0;
