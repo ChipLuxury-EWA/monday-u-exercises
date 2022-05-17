@@ -15,14 +15,16 @@ header {
     font-size: 1.5rem;
 }
 
-header, form {
+header,
+form {
     min-height: 20vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-form input, form button {
+form input,
+form button {
     padding: 0.5rem;
     font-size: 2rem;
     border: none;
@@ -68,7 +70,8 @@ form button:hover {
     flex: 1; /* moving check and trash icon to the right */
 }
 
-.trash-button, .complete-button {
+.trash-button,
+.complete-button {
     color: white;
     background: #db5039;
     border: none;
@@ -96,7 +99,8 @@ form button:hover {
     padding: 0rem 0.5rem;
 }
 
-.fa-trash, .fa-check {
+.fa-trash,
+.fa-check {
     pointer-events: none;
 }
 
@@ -109,3 +113,44 @@ form button:hover {
     transform: translateY(8rem) rotateZ(20deg);
     opacity: 0;
 }
+
+.custom-select {
+    position: relative;
+    margin: 0rem 1rem;
+}
+
+.custom-select select {
+    background-color: white;
+    padding: 0.8rem;
+    width: 13rem;
+    border: none;
+    font-size: 1.5rem;
+    appearance: none;
+    outline: none;
+}
+
+.custom-select::before {
+    content: "\f149";
+    font-family: FontAwesome;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2rem;
+    height: 100%;
+    padding: 0 0.5rem;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 3.5rem;
+    color: #8e49e8;
+    background-color: white;
+    pointer-events: none;
+}
+
+.custom-select:hover::before {
+    color: white;
+    background-color: #8e49e8;
+}
+
+/* .custom-select select option {
+    padding: 10px;
+} */
