@@ -60,7 +60,7 @@ function deleteOrCompleteTask(event) {
     } else if (item.classList[0] === "complete-button") {
         const todo = item.parentElement;
         todo.classList.toggle("completed");
-    } else {
+    } else if (item.classList[0] === "todo-item") {
         confirm(item.innerHTML);
     }
 }

@@ -164,6 +164,7 @@ form button:hover {
 .clear-all-button:hover {
     background: #8e49e8a2;
     color: #8e49e8;
+    cursor: pointer;
 }
 
 .filter-todo{
@@ -177,4 +178,15 @@ form button:hover {
     color: white;
     max-width: 145px;
     display: none;
+}
+
+.filter-todo:hover {
+    background: #8e49e8a2;
+    color: #8e49e8;
+    cursor: pointer;
+}
+
+select > option {
+    background: #8e49e8;
+    color: white;
 }
