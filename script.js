@@ -4,14 +4,15 @@ const todoButton = document.querySelector(".todo-button");
 const todoList = document.querySelector(".todo-list");
 const todos = todoList.childNodes;
 const clearAllButton = document.querySelector(".clear-all-button");
-// const filterOption = document.querySelector(".filter-todo");
+const filterOption = document.querySelector(".filter-todo");
 const pendingCounter = document.querySelector(".pending-counter");
 
 //Event listeners:
 todoButton.onclick = addTodo;
 todoList.onclick = deleteOrCompleteTask;
 clearAllButton.onclick = clearAllTasks;
-// filterOption.onclick = filterTodo;
+filterOption.onclick = filterTodo;
+
 //Functions:
 
 function addTodo(event) {
@@ -64,6 +65,7 @@ function deleteOrCompleteTask(event) {
     }
 }
 
+// filtering completed task or uncompleted task
 function filterTodo(event) {
     todos.forEach(function (todo) {
         switch (event.target.value) {
@@ -89,13 +91,13 @@ function filterTodo(event) {
 }
 
 function clearAllTasks() {
-    const allTodos = document.querySelectorAll('.todo')
-    allTodos.forEach(task => {
+    const allTodos = document.querySelectorAll(".todo");
+    allTodos.forEach((task) => {
         task.classList.add("fall");
         task.addEventListener("transitionend", function () {
             task.remove();
         });
-    })
+    });
 }
 
 function updatePending() {
@@ -106,16 +108,20 @@ function updatePending() {
     } else {
         pendingCounter.innerHTML = `You have ${pendingTasksAmount} pending tasks`;
     }
-    showHoseClearAllButton();
+    showHideFeaturesButtons();
 }
 
-function showHoseClearAllButton() {
+function showHideFeaturesButtons() {
     if (todos.length !== 0) {
         clearAllButton.style.display = "flex";
+        filterOption.style.display = "flex";
     } else {
         clearAllButton.style.display = "none";
+        filterOption.style.display = "none";
     }
 }
+
+// Updating pending message on each task change:
 
 // https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver:
 const config = { attributes: true, childList: true, subtree: true };
