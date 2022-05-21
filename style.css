@@ -120,6 +120,11 @@ form button:hover {
     padding: 0rem 1rem;
 }
 
+.todo:hover {
+    cursor: pointer;
+    background: #63dad2;
+}
+
 .fa-trash,
 .fa-check {
     pointer-events: none;

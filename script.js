@@ -94,9 +94,9 @@ function clearAllTasks() {
     const allTodos = document.querySelectorAll(".todo");
     allTodos.forEach((task) => {
         task.classList.add("fall");
-        task.addEventListener("transitionend", function () {
+        setTimeout(() => {
             task.remove();
-        });
+        },500);    
     });
 }
 
