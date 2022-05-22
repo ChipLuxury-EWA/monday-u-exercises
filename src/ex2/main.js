@@ -1,5 +1,9 @@
 // Implement the `Main` class here
-
+class Main {
+    constructor(params) {
+        
+    }
+}
 
 const main = new Main();
 

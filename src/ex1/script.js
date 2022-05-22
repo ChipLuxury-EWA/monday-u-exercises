@@ -126,7 +126,7 @@ function showHideFeaturesButtons() {
 // https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver:
 const config = { attributes: true, childList: true, subtree: true };
 
-const callback = function (mutationsList, observer) {
+const callback = function (mutationsList) {
     for (const mutation of mutationsList) {
         if (mutation.type === "childList") {
             updatePending();
