@@ -83,16 +83,17 @@ function deleteOrCompleteTask(event) {
 // filtering completed task or uncompleted task
 function filterTodo(event) {
     todos.forEach(function (todo) {
+        const hasTaskCompleted = todo.classList.contains("completed")
         switch (event.target.value) {
             case "completed":
-                if (todo.classList.contains("completed")) {
+                if (hasTaskCompleted) {
                     todo.style.display = "flex";
                 } else {
                     todo.style.display = "none";
                 }
                 break;
             case "uncompleted":
-                if (!todo.classList.contains("completed")) {
+                if (!hasTaskCompleted) {
                     todo.style.display = "flex";
                 } else {
                     todo.style.display = "none";
