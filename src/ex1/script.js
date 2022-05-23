@@ -18,35 +18,50 @@ filterOption.onclick = filterTodo;
 function addTodo(event) {
     event.preventDefault();
 
-    const todoDiv = document.createElement("div");
-    todoDiv.classList.add("todo");
-
-    //create a new todo list item:
-    const newTodo = document.createElement("li");
-
     if (todoInput.value === "") {
         alert("ERROR - no empty task is allowed");
         return;
     }
+    const taskItem = createTodoDiv(todoInput.value)
+    todoList.appendChild(taskItem);
+    // clearing the input:
+    todoInput.value = "";
+}
 
-    newTodo.innerText = todoInput.value;
+function createTodoDiv(todoInput) {
+    const newTodoDiv = document.createElement("div");
+    newTodoDiv.classList.add("todo");
+    newTodoDiv.appendChild(createTodoTitle(todoInput));
+    newTodoDiv.append(...createTwoButton());
+    return newTodoDiv
+}
+
+function createTodoTitle(todoTitle) {
+    // this function create a new todo title and assign a class 
+    const newTodo = document.createElement("li");
+    newTodo.innerText = todoTitle
     newTodo.classList.add("todo-item");
-    todoDiv.appendChild(newTodo);
+    return newTodo
+}
+
+function createTwoButton() {
+    // This function create 2 necessary buttons:
+    // according to font awesome buttonIcon can be "check" or "trash"
 
     //Check-mark button:
-    const completeButton = document.createElement("button");
-    completeButton.innerHTML = '<i class="fas fa-check"></i>';
-    completeButton.classList.add("complete-button");
-    todoDiv.appendChild(completeButton);
-
+    const button1 = createButton("complete-button", "check");
     //check trash button:
-    const trashButton = document.createElement("button");
-    trashButton.innerHTML = '<i class="fas fa-trash"></i>';
-    trashButton.classList.add("trash-button");
-    todoDiv.appendChild(trashButton);
+    const button2 = createButton("trash-button", "trash");
+    return [button1, button2];
+}
 
-    todoList.appendChild(todoDiv);
-    todoInput.value = "";
+function createButton(buttonClass, buttonIcon) {
+    // This function create a button with font-awesome icon
+    // and add class to it
+    const newButton = document.createElement("button");
+    newButton.innerHTML = `<i class="fas fa-${buttonIcon}" ></i>`;
+    newButton.classList.add(buttonClass);
+    return newButton;
 }
 
 function deleteOrCompleteTask(event) {
@@ -96,7 +111,7 @@ function clearAllTasks() {
         task.classList.add("fall");
         setTimeout(() => {
             task.remove();
-        },500);    
+        }, 500);
     });
 }
 
