@@ -1,7 +1,16 @@
-import { ItemManger } from "./itemManger.js";
+import { ItemManager } from "./itemManger.js";
 
 import { TASK_COMPLETED_CLASS_NAME } from "./constants.js";
+
 class Main {
+    renderTasks = () => {
+        this.todoList.innerHTML = ""; // prevent double rendering..
+        itemManager.tasksArray.forEach((task) => {
+            const taskItem = this.createTodoDiv(task);
+            this.todoList.appendChild(taskItem);
+        });
+    };
+
     addTodo = (event) => {
         event.preventDefault();
 
@@ -10,8 +19,8 @@ class Main {
             return;
         }
         // if (regex just numbers) {fetch pokemon by id}
-        this.taskItem = this.createTodoDiv(this.todoInput.value);
-        this.todoList.appendChild(this.taskItem);
+        itemManager.addTask(this.todoInput.value);
+        this.renderTasks()
         // clearing the input:
         this.todoInput.value = "";
     };
@@ -124,7 +133,7 @@ class Main {
         });
     };
 
-    clearAllTasks= () => {
+    clearAllTasks = () => {
         const allTodos = document.querySelectorAll(".todo");
         allTodos.forEach((task) => {
             task.classList.add("fall");
@@ -132,7 +141,8 @@ class Main {
                 task.remove();
             }, 500);
         });
-    }
+        itemManager.clearAllTasks()
+    };
 
     init() {
         //SELECTORS:
@@ -158,9 +168,9 @@ class Main {
 }
 
 const main = new Main();
+const itemManager = new ItemManager();
 document.addEventListener("DOMContentLoaded", function () {
     // you should create an `init` method in your class
     // the method should add the event listener to your "add" button
-
     main.init();
 });

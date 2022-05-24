@@ -1,17 +1,24 @@
-export class ItemManger {
-    constructor(params) {
-        
+export class ItemManager {
+    constructor() {
+        this.tasksArray = [];
     }
-}
-
-class ItemManager2 {
-    constructor(){
-        this.items = [];
+    clearAllTasks = () => {
+        this.tasksArray = []
     }
 
-    remove(){
-    }_
+    removeTask = (task) => {
+        const index = this.tasksArray.indexOf(task)
+        if (index > -1) {
+            this.tasksArray.splice(index, 1)
+        }
+    }
 
-    add(){
+    addTask = (task) => {
+        this.tasksArray.push(task);
+    }
+
+    fetchPokemon = (id) => {
+        // call pokemon client and get 'catch pokeName'
+        // this.addTask('this')
     }
 }
