@@ -1,8 +1,8 @@
 import { ItemManger } from "./itemManger.js";
 
+import { TASK_COMPLETED_CLASS_NAME } from "./constants.js";
 class Main {
     addTodo = (event) => {
-        console.log(this);
         event.preventDefault();
 
         if (this.todoInput.value === "") {
@@ -66,6 +66,37 @@ class Main {
         }
     };
 
+    showHideFeaturesButtons = () => {
+        if (this.todos.length !== 0) {
+            this.clearAllButton.style.display = "flex";
+            this.filterOption.style.display = "flex";
+        } else {
+            this.clearAllButton.style.display = "none";
+            this.filterOption.style.display = "none";
+        }
+    };
+
+    updatePending = () => {
+        const completedTask = document.querySelectorAll(".completed");
+        const pendingTasksAmount = this.todos.length - completedTask.length;
+        if (pendingTasksAmount === 0) {
+            this.pendingCounter.innerHTML = `YAYY all your task are done, add new task...`;
+        } else {
+            this.pendingCounter.innerHTML = `You have ${pendingTasksAmount} pending tasks`;
+        }
+        this.showHideFeaturesButtons();
+    };
+
+    callback = (mutationsList) => {
+        for (const mutation of mutationsList) {
+            if (mutation.type === "childList") {
+                this.updatePending();
+            } else if (mutation.type === "attributes") {
+                this.updatePending();
+            }
+        }
+    };
+
     init() {
         //SELECTORS:
         this.todoInput = document.querySelector(".todo-input");
@@ -81,6 +112,11 @@ class Main {
         this.todoList.onclick = this.deleteOrCompleteTask;
         // clearAllButton.onclick = this.clearAllTasks;
         // filterOption.onclick = this.filterTodo;
+
+        // Updating pending message on each task change(className or new item):
+        const config = { attributes: true, childList: true, subtree: true };
+        const observer = new MutationObserver(this.callback);
+        observer.observe(this.todoList, config);
     }
 }
 
