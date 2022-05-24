@@ -19,8 +19,10 @@ class Main {
             alert("ERROR - no empty task is allowed");
             return;
         } else if (!isNaN(taskInput)) {
-            await pokemonClient.fetchPokemonById(taskInput);
+            await pokemonClient.getPokemonNameById(taskInput);
             itemManager.addTask(`catch ${pokemonClient.pokemonName}`);
+        } else if (taskInput.includes(",")) {
+            console.log(pokemonClient.testReturn());
         } else {
             itemManager.addTask(taskInput);
         }
