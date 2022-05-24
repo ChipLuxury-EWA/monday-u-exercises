@@ -124,6 +124,16 @@ class Main {
         });
     };
 
+    clearAllTasks= () => {
+        const allTodos = document.querySelectorAll(".todo");
+        allTodos.forEach((task) => {
+            task.classList.add("fall");
+            setTimeout(() => {
+                task.remove();
+            }, 500);
+        });
+    }
+
     init() {
         //SELECTORS:
         this.todoInput = document.querySelector(".todo-input");
@@ -137,7 +147,7 @@ class Main {
         //Event listeners:
         this.todoButton.onclick = this.addTodo;
         this.todoList.onclick = this.deleteOrCompleteTask;
-        // clearAllButton.onclick = this.clearAllTasks;
+        this.clearAllButton.onclick = this.clearAllTasks;
         this.filterOption.onclick = this.filterTodo;
 
         // Updating pending message on each task change(className or new item):
