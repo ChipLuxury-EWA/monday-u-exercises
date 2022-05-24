@@ -1,4 +1,5 @@
 import { ItemManager } from "./itemManger.js";
+import { PokemonClient } from "./pokemonClient.js";
 
 import { TASK_COMPLETED_CLASS_NAME } from "./constants.js";
 
@@ -11,15 +12,18 @@ class Main {
         });
     };
 
-    addTodo = (event) => {
+    addTodo = async (event) => {
         event.preventDefault();
-
-        if (this.todoInput.value === "") {
+        const taskInput = this.todoInput.value;
+        if (taskInput === "") {
             alert("ERROR - no empty task is allowed");
             return;
+        } else if (!isNaN(taskInput)) {
+            await pokemonClient.fetchPokemonById(taskInput);
+            itemManager.addTask(`catch ${pokemonClient.pokemonName}`);
+        } else {
+            itemManager.addTask(taskInput);
         }
-        // if (regex just numbers) {fetch pokemon by id}
-        itemManager.addTask(this.todoInput.value);
         this.renderTasks();
         // clearing the input:
         this.todoInput.value = "";
@@ -67,6 +71,9 @@ class Main {
             setTimeout(() => {
                 itemManager.removeTask(todo.childNodes[0].innerHTML);
                 todo.remove();
+                // this.renderTasks() //comment out because of performance.
+                // The readme file says to render again from the array after each delete,
+                // my logic delete the dom element so no need to re-render.
             }, 500);
         } else if (item.classList[0] === "complete-button") {
             const todo = item.parentElement;
@@ -170,6 +177,8 @@ class Main {
 
 const main = new Main();
 const itemManager = new ItemManager();
+const pokemonClient = new PokemonClient();
+
 document.addEventListener("DOMContentLoaded", function () {
     // you should create an `init` method in your class
     // the method should add the event listener to your "add" button

@@ -19,6 +19,5 @@ export class ItemManager {
 
     fetchPokemon = (id) => {
         // call pokemon client and get 'catch pokeName'
-        // this.addTask('this')
     }
 }
