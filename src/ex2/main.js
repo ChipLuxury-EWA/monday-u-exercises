@@ -11,21 +11,24 @@ class Main {
             this.todoList.appendChild(taskItem);
         });
     };
-
+    // TODO: replace if else if -> switch cases...
     addTodo = async (event) => {
         event.preventDefault();
         const taskInput = this.todoInput.value;
         if (taskInput === "") {
             alert("ERROR - no empty task is allowed");
             return;
+            // TODO improve error handling in the pokemon client
+        } else if (taskInput === "0" || taskInput > 898) {
+            itemManager.addTask("Learn Pokemon's ID");
         } else if (!isNaN(taskInput)) {
             await pokemonClient.getPokemonNameById(taskInput);
             itemManager.addTask(`catch ${pokemonClient.pokemonName}`); // pokemonName will also work with [0] indexing
         } else if (taskInput.includes(",")) {
-            await pokemonClient.catchThemAll(taskInput.split(','));
-            pokemonClient.pokemonName.forEach(pokemon => {
-                itemManager.addTask(`catch ${pokemon}`)
-            })
+            await pokemonClient.catchThemAll(taskInput.split(","));
+            pokemonClient.pokemonName.forEach((pokemon) => {
+                itemManager.addTask(`catch ${pokemon}`);
+            });
         } else {
             itemManager.addTask(taskInput);
         }
