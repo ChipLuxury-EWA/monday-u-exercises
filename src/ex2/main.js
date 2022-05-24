@@ -20,7 +20,7 @@ class Main {
         }
         // if (regex just numbers) {fetch pokemon by id}
         itemManager.addTask(this.todoInput.value);
-        this.renderTasks()
+        this.renderTasks();
         // clearing the input:
         this.todoInput.value = "";
     };
@@ -64,9 +64,10 @@ class Main {
         if (item.classList[0] === "trash-button") {
             const todo = item.parentElement;
             todo.classList.add("fall");
-            todo.addEventListener("transitionend", function () {
+            setTimeout(() => {
+                itemManager.removeTask(todo.childNodes[0].innerHTML);
                 todo.remove();
-            });
+            }, 500);
         } else if (item.classList[0] === "complete-button") {
             const todo = item.parentElement;
             todo.classList.toggle(TASK_COMPLETED_CLASS_NAME);
@@ -141,7 +142,7 @@ class Main {
                 task.remove();
             }, 500);
         });
-        itemManager.clearAllTasks()
+        itemManager.clearAllTasks();
     };
 
     init() {
