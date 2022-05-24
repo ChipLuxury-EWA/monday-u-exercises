@@ -2,7 +2,7 @@ const URL = "https://pokeapi.co/api/v2/pokemon";
 
 export class PokemonClient {
     constructor() {
-        this.pokemonName = "";
+        this.pokemonName = [];
     }
     fetchPokemonById = async (id) => {
         const response = await fetch(`${URL}/${id}`);
@@ -13,8 +13,12 @@ export class PokemonClient {
         const pokemon = await this.fetchPokemonById(id)
         this.pokemonName = [pokemon.name]
     }
-
-    testReturn = () => {
-        return "2"
+    catchThemAll = async(idsArray) => {
+        this.pokemonName = []        
+        await Promise.all(idsArray.map(async id => {
+            const pokemon = await this.fetchPokemonById(id)
+            this.pokemonName.push(pokemon.name)
+        }))
     }
+
 }

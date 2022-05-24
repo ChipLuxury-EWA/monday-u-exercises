@@ -20,9 +20,12 @@ class Main {
             return;
         } else if (!isNaN(taskInput)) {
             await pokemonClient.getPokemonNameById(taskInput);
-            itemManager.addTask(`catch ${pokemonClient.pokemonName}`);
+            itemManager.addTask(`catch ${pokemonClient.pokemonName}`); // pokemonName will also work with [0] indexing
         } else if (taskInput.includes(",")) {
-            console.log(pokemonClient.testReturn());
+            await pokemonClient.catchThemAll(taskInput.split(','));
+            pokemonClient.pokemonName.forEach(pokemon => {
+                itemManager.addTask(`catch ${pokemon}`)
+            })
         } else {
             itemManager.addTask(taskInput);
         }
