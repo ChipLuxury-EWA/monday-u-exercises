@@ -97,6 +97,33 @@ class Main {
         }
     };
 
+    filterTodo = (event) => {
+        this.todos.forEach(function (todo) {
+            const hasTaskCompleted = todo.classList.contains(
+                TASK_COMPLETED_CLASS_NAME
+            );
+            switch (event.target.value) {
+                case "completed":
+                    if (hasTaskCompleted) {
+                        todo.style.display = "flex";
+                    } else {
+                        todo.style.display = "none";
+                    }
+                    break;
+                case "uncompleted":
+                    if (!hasTaskCompleted) {
+                        todo.style.display = "flex";
+                    } else {
+                        todo.style.display = "none";
+                    }
+                    break;
+                default:
+                    todo.style.display = "flex";
+                    break;
+            }
+        });
+    };
+
     init() {
         //SELECTORS:
         this.todoInput = document.querySelector(".todo-input");
@@ -111,7 +138,7 @@ class Main {
         this.todoButton.onclick = this.addTodo;
         this.todoList.onclick = this.deleteOrCompleteTask;
         // clearAllButton.onclick = this.clearAllTasks;
-        // filterOption.onclick = this.filterTodo;
+        this.filterOption.onclick = this.filterTodo;
 
         // Updating pending message on each task change(className or new item):
         const config = { attributes: true, childList: true, subtree: true };
