@@ -24,7 +24,14 @@ class Main {
             await pokemonClient.getPokemonNameById(taskInput);
             itemManager.addTask(`catch ${pokemonClient.pokemonName}`); // pokemonName will also work with [0] indexing
         } else if (taskInput.includes(",")) {
-            await pokemonClient.catchThemAll(taskInput.split(","));
+            // This const assignment handle input like "1,1, 2,3,4":
+            // 1. remove spaces: "1,1,2,3,4"
+            // 2. split to new array: [1,1,2,3,4]
+            // 3. remove duplicate: [1,2,3,4]
+            const pokemonIds = [
+                ...new Set(taskInput.replace(/\s/g, "").split(",")),
+            ];
+            await pokemonClient.catchThemAll(pokemonIds);
             pokemonClient.pokemonName.forEach((pokemon) => {
                 itemManager.addTask(`catch ${pokemon}`);
             });
