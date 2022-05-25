@@ -6,12 +6,11 @@ import { TASK_COMPLETED_CLASS_NAME } from "./constants.js";
 class Main {
     renderTasks = () => {
         this.todoList.innerHTML = ""; // prevent double rendering..
-        itemManager.tasksArray.forEach((task) => {
-            const taskItem = this.createTodoDiv(task);
+        itemManager.tasksArray.forEach(async (task) => {
+            const taskItem = await this.createTodoDiv(task);
             this.todoList.appendChild(taskItem);
         });
     };
-    // TODO: replace if else if -> switch cases...
     addTodo = async (event) => {
         event.preventDefault();
         const taskInput = this.todoInput.value;
@@ -37,10 +36,17 @@ class Main {
         this.todoInput.value = "";
     };
 
-    createTodoDiv = (todoInput) => {
+    createTodoDiv = async (todoInput) => {
         const newTodoDiv = document.createElement("div");
         newTodoDiv.classList.add("todo");
         newTodoDiv.appendChild(this.createTodoTitle(todoInput));
+        // add pokemon img element:
+        if (todoInput.split(" ")[0] === "catch") {
+            const pokemonImage = await this.createPokemonSprit(
+                todoInput.split(" ")[1]
+            );
+            newTodoDiv.append(pokemonImage);
+        }
         newTodoDiv.append(...this.createTwoBasicButtons(this));
         return newTodoDiv;
     };
@@ -69,6 +75,14 @@ class Main {
         newButton.innerHTML = `<i class="fas fa-${buttonIcon}" ></i>`;
         newButton.classList.add(buttonClass);
         return newButton;
+    };
+
+    createPokemonSprit = async (pokemonName) => {
+        const newImg = document.createElement("img");
+        newImg.src = await pokemonClient.getPokemonImgByName(pokemonName);
+        newImg.alt = `${pokemonName} sprit`;
+        newImg.style = "width:50px;height:50px;";
+        return newImg;
     };
 
     deleteOrCompleteTask = (event) => {

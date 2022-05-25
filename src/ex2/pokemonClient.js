@@ -4,21 +4,27 @@ export class PokemonClient {
     constructor() {
         this.pokemonName = [];
     }
-    fetchPokemonById = async (id) => {
+    fetchPokemonByIdOrName = async (id) => {
         const response = await fetch(`${URL}/${id}`);
         const ans = await response.json();
-        return ans
+        return ans;
     };
     getPokemonNameById = async (id) => {
-        const pokemon = await this.fetchPokemonById(id)
-        this.pokemonName = [pokemon.name]
+        const pokemon = await this.fetchPokemonByIdOrName(id);
+        this.pokemonName = [pokemon.name];
+    };
+    getPokemonImgByName = async (name) => {
+        const pokemon = await this.fetchPokemonByIdOrName(name);
+        this.pokemonImgUrl = pokemon.sprites.front_default
+        return this.pokemonImgUrl
     }
-    catchThemAll = async(idsArray) => {
-        this.pokemonName = []        
-        await Promise.all(idsArray.map(async id => {
-            const pokemon = await this.fetchPokemonById(id)
-            this.pokemonName.push(pokemon.name)
-        }))
-    }
-
+    catchThemAll = async (idsArray) => {
+        this.pokemonName = [];
+        await Promise.all(
+            idsArray.map(async (id) => {
+                const pokemon = await this.fetchPokemonByIdOrName(id);
+                this.pokemonName.push(pokemon.name);
+            })
+        );
+    };
 }
