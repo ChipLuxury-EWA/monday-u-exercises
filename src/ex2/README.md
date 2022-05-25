@@ -37,7 +37,7 @@ When you finish it should look like this:
 ### Bonus
 
 - [x] Add a delete all option - make sure you're actually deleting the data, not just removing from the DOM
-- [ ] Validate that the user isn't adding the same pokemon todo more than once
+- [x] Validate that the user isn't adding the same pokemon todo more than once
 - [ ] Get more nested data from the pokemon API and display it as part of the todo item (e.g. “catch bulbasaur the grass/leaf type pokemon”)
   - you'll have to explore the API to understand where to extract that data from =]
 - [ ] Modify the API request to use a pokemon’s name instead of its ID if you find a pokemon name (from a closed list of values) in the user’s input. For example, if the user inputs "charmender", you should get the data about charmender from the API by this pokemon's name - you'll have to read the docs for this too to see how that works ;)
