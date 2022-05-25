@@ -21,6 +21,10 @@ class Main {
         } else if (taskInput === "0" || taskInput > 898) {
             itemManager.addTask("Learn Pokemon's ID");
         } else if (!isNaN(taskInput)) {
+            if (taskInput.indexOf(' ') >= 0) {
+                alert("Input space error")
+                return
+            }
             await pokemonClient.getPokemonNameById(taskInput);
             itemManager.addTask(`catch ${pokemonClient.pokemonName}`); // pokemonName will also work with [0] indexing
         } else if (taskInput.includes(",")) {
