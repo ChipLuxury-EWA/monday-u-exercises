@@ -2,28 +2,36 @@ const URL = "https://pokeapi.co/api/v2/pokemon";
 
 export class PokemonClient {
     constructor() {
-        this.pokemonName = [];
+        this.pokemonNames = [];
     }
     fetchPokemonByIdOrName = async (id) => {
         const response = await fetch(`${URL}/${id}`);
-        const ans = await response.json();
-        return ans;
+        if (response.status === 200) {
+            const ans = await response.json();
+            return ans;
+        } else if (response.status === 404) {
+            return false;
+        }
     };
     getPokemonNameById = async (id) => {
         const pokemon = await this.fetchPokemonByIdOrName(id);
-        this.pokemonName = [pokemon.name];
+        this.pokemonNames = [pokemon.name];
     };
     getPokemonImgByName = async (name) => {
         const pokemon = await this.fetchPokemonByIdOrName(name);
-        this.pokemonImgUrl = pokemon.sprites.front_default
-        return this.pokemonImgUrl
-    }
+        if (pokemon === false) {
+            return "";
+        } else {
+            this.pokemonImgUrl = pokemon.sprites.front_default;
+            return this.pokemonImgUrl;
+        }
+    };
     catchThemAll = async (idsArray) => {
-        this.pokemonName = [];
+        this.pokemonNames = [];
         await Promise.all(
             idsArray.map(async (id) => {
                 const pokemon = await this.fetchPokemonByIdOrName(id);
-                this.pokemonName.push(pokemon.name);
+                this.pokemonNames.push(pokemon.name);
             })
         );
     };

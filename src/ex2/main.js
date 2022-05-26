@@ -1,7 +1,11 @@
 import { ItemManager } from "./itemManger.js";
 import { PokemonClient } from "./pokemonClient.js";
 
-import { TASK_COMPLETED_CLASS_NAME } from "./constants.js";
+import {
+    POKEMON_ID_ZERO,
+    TASK_COMPLETED_CLASS_NAME,
+    TOP_EDGE_POKEMON_ID,
+} from "./constants.js";
 
 class Main {
     renderTasks = () => {
@@ -18,15 +22,18 @@ class Main {
             alert("ERROR - no empty task is allowed");
             return;
             // TODO improve error handling in the pokemon client
-        } else if (taskInput === "0" || taskInput > 898) {
+        } else if (
+            taskInput === POKEMON_ID_ZERO ||
+            taskInput > TOP_EDGE_POKEMON_ID
+        ) {
             itemManager.addTask("Learn Pokemon's ID");
         } else if (!isNaN(taskInput)) {
-            if (taskInput.indexOf(' ') >= 0) {
-                alert("Input space error")
-                return
+            if (taskInput.indexOf(" ") >= 0) {
+                alert("Input space error");
+                return;
             }
             await pokemonClient.getPokemonNameById(taskInput);
-            itemManager.addTask(`catch ${pokemonClient.pokemonName}`); // pokemonName will also work with [0] indexing
+            itemManager.addTask(`catch ${pokemonClient.pokemonNames}`); // pokemonName will also work with [0] indexing
         } else if (taskInput.includes(",")) {
             // This const assignment handle input like "1,1, 2,3,4":
             // 1. remove spaces: "1,1,2,3,4"
@@ -36,7 +43,7 @@ class Main {
                 ...new Set(taskInput.replace(/\s/g, "").split(",")),
             ];
             await pokemonClient.catchThemAll(pokemonIds);
-            pokemonClient.pokemonName.forEach((pokemon) => {
+            pokemonClient.pokemonNames.forEach((pokemon) => {
                 itemManager.addTask(`catch ${pokemon}`);
             });
         } else {
@@ -137,11 +144,9 @@ class Main {
         this.showHideFeaturesButtons();
     };
 
-    callback = (mutationsList) => {
+    catchChangesInTodoElements = (mutationsList) => {
         for (const mutation of mutationsList) {
-            if (mutation.type === "childList") {
-                this.updatePending();
-            } else if (mutation.type === "attributes") {
+            if (["childList", "attributes"].includes(mutation.type)) {
                 this.updatePending();
             }
         }
@@ -203,7 +208,7 @@ class Main {
 
         // Updating pending message on each task change(className or new item):
         const config = { attributes: true, childList: true, subtree: true };
-        const observer = new MutationObserver(this.callback);
+        const observer = new MutationObserver(this.catchChangesInTodoElements);
         observer.observe(this.todoList, config);
     }
 }
