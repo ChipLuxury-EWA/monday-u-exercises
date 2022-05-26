@@ -28,7 +28,7 @@ class Main {
         ) {
             itemManager.addTask("Learn Pokemon's ID");
         } else if (!isNaN(taskInput)) {
-            if (taskInput.trim() === "") {
+            if (!taskInput.trim()) {
                 alert("Input space error");
                 return;
             }
