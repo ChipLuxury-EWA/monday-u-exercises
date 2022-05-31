@@ -2,8 +2,14 @@ import { ItemManager } from "./itemManger.js";
 import { PokemonClient } from "./pokemonClient.js";
 
 import {
+    CLEAR_BUTTON_CLASS,
+    COUNTER_CLASS,
+    FILTER_CLASS,
     POKEMON_ID_ZERO,
     TASK_COMPLETED_CLASS_NAME,
+    TODO_BUTTON_CLASS,
+    TODO_INPUT_CLASS,
+    TODO_LIST_CLASS,
     TOP_EDGE_POKEMON_ID,
 } from "./constants.js";
 
@@ -98,9 +104,11 @@ class Main {
     createPokemonSprit = async (pokemonName) => {
         const newImg = document.createElement("img");
         newImg.src = await pokemonClient.getPokemonImgByName(pokemonName);
-        newImg.alt = `${pokemonName} sprit`;
-        newImg.style = "width:50px;height:50px;";
-        return newImg;
+        if (newImg.src === "") {
+            newImg.alt = `${pokemonName} sprit`;
+            newImg.style = "width:50px;height:50px;";
+            return newImg;
+        }
     };
 
     deleteOrCompleteTask = (event) => {
@@ -192,13 +200,13 @@ class Main {
 
     init() {
         //SELECTORS:
-        this.todoInput = document.querySelector(".todo-input");
-        this.todoButton = document.querySelector(".todo-button");
-        this.todoList = document.querySelector(".todo-list");
+        this.todoInput = document.querySelector(TODO_INPUT_CLASS);
+        this.todoButton = document.querySelector(TODO_BUTTON_CLASS);
+        this.todoList = document.querySelector(TODO_LIST_CLASS);
         this.todos = this.todoList.childNodes;
-        this.clearAllButton = document.querySelector(".clear-all-button");
-        this.filterOption = document.querySelector(".filter-todo");
-        this.pendingCounter = document.querySelector(".pending-counter");
+        this.clearAllButton = document.querySelector(CLEAR_BUTTON_CLASS);
+        this.filterOption = document.querySelector(FILTER_CLASS);
+        this.pendingCounter = document.querySelector(COUNTER_CLASS);
 
         //Event listeners:
         this.todoButton.onclick = this.addTodo;
