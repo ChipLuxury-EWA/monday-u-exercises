@@ -56,7 +56,7 @@ export const readAndPrintAllTodos = async () => {
         process.env.FILE_NAME
     );
     todos.forEach((todo, index) => {
-        todo && console.log(`${index + 1}) ${todo}.`);
+        todo && console.log(`${index + 1})\t${todo}.`);
     });
 };
 
