@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 import { Command } from "commander";
 import {
-    addNewTask,
     deleteTodo,
     readAndPrintAllTodos,
     setFolderAndFile,
+    handleInput,
 } from "./services.js";
 
 const program = new Command();
@@ -25,7 +25,7 @@ program
     .description("Add a new task, or enter id to catch pokemon")
     .argument("<string or number>", "task title, or id of pokemon")
     .action((cliInput) => {
-        addNewTask(cliInput);
+        handleInput(cliInput);
     });
 
 program

@@ -5,6 +5,9 @@ import {
     reWriteFile,
 } from "mondayu-logger-tom-portugez";
 
+import { PokemonClient } from "./pokemonClient.js";
+const pokemonClient = new PokemonClient();
+
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -12,10 +15,35 @@ export const setFolderAndFile = async (folder, file) => {
     folderAndFileInit(folder, file);
 };
 
-export const addNewTask = async (newTask) => {
+const addNewTask = async (newTask) => {
     addNewLine(process.env.FOLDER_NAME, process.env.FILE_NAME, newTask);
 };
 
+export const handleInput = async (cliInput) => {
+    if (!isNaN(cliInput)) {
+        if (!cliInput.trim()) {
+            console.log("Input space error");
+            return;
+        }
+        await pokemonClient.getPokemonNameById(cliInput);
+        addNewTask(`catch ${pokemonClient.pokemonNames}`); // pokemonName will also work with [0] indexing
+    } else if (cliInput.includes(",")) {
+        // This const assignment handle input like "1,1, 2,3,4":
+        // 1. remove spaces: "1,1,2,3,4"
+        // 2. split to new array: [1,1,2,3,4]
+        // 3. remove duplicate: [1,2,3,4]
+        const pokemonIds = [
+            ...new Set(cliInput.replace(/\s/g, "").split(",")),
+        ];
+        await pokemonClient.catchThemAll(pokemonIds);
+        pokemonClient.pokemonNames.forEach((pokemon) => {
+            addNewTask(`catch ${pokemon}`);
+        });
+    } else {
+        addNewTask(taskInput);
+    }
+
+}
 export const readAndPrintAllTodos = async () => {
     const todos = await readFileLineByLine(
         process.env.FOLDER_NAME,
