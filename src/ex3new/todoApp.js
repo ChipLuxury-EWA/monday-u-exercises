@@ -1,9 +1,11 @@
 #!/usr/bin/env node
-import dotenv from "dotenv";
 import { Command } from "commander";
-import { folderAndFileInit, addNewLine } from "mondayu-logger-tom-portugez";
+import {
+    addNewTask,
+    setFolderAndFile,
+} from "./services.js";
+import {readFileLineByLine} from 'mondayu-logger-tom-portugez'
 
-dotenv.config();
 const program = new Command();
 
 program.name("Todo App V2").description("The best Todo app!").version("2.0.0");
@@ -14,7 +16,7 @@ program
     .option("-d, --directory <string>", "set directory name", "task_files")
     .option("-f, --file <string>", "set file name", "tasks")
     .action((options) => {
-        folderAndFileInit(options.directory, options.file);
+        setFolderAndFile(options.directory, options.file);
     });
 
 program
@@ -22,20 +24,14 @@ program
     .description("Add a new task, or enter id to catch pokemon")
     .argument("<string or number>", "task title, or id of pokemon")
     .action((cliInput) => {
-        addNewLine(process.env.FOLDER_NAME, process.env.FILE_NAME, cliInput);
+        addNewTask(cliInput);
     });
 
 program
     .command("get")
     .description("Get all your task, or specified task")
-    .option(
-        "-t, --taskNumber <number>",
-        "Get specified task by task number",
-        "1"
-    )
-    .action((options) => {
-        console.log("getting all of your tasks");
-        console.log(`getting task #${options.taskNumber}`);
+    .action(() => {
+        readAndPrintAllTodos();
     });
 
 program
@@ -45,5 +41,15 @@ program
     .action((cliInput) => {
         console.log(`Deleting task #${cliInput}`);
     });
+
+const readAndPrintAllTodos = async () => {
+    const todos = await readFileLineByLine(
+        process.env.FOLDER_NAME,
+        process.env.FILE_NAME
+    );
+    todos.forEach((todo, index) => {
+        todo && console.log(`${index + 1}) ${todo}.`);
+    });
+};
 
 program.parse(process.argv);
