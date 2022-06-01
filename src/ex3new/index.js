@@ -7,6 +7,16 @@ const program = new Command();
 program.name("Todo App V2").description("The best Todo app!").version("2.0.0");
 
 program
+    .command("init")
+    .description("set directory name and necessary file name")
+    .option("-d, --directory <string>", "set directory name", "task_files")
+    .option("-f, --file <string>","set file name","tasks")
+    .action((options) => {
+        console.log(`creating dir named: ${options.directory}`)
+        console.log(`creating file: ${options.file}`)
+    })
+
+program
     .command("add")
     .description("Add a new task, or enter id to catch pokemon")
     .argument("<string or number>", "task title, or id of pokemon")
