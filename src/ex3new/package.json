@@ -1,0 +1,13 @@
+{
+  "name": "simple_todo_app",
+  "version": "1.0.0",
+  "description": "simple cli todo app ",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "echo \"to start use node.js to run index.js or chmod+x index.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
