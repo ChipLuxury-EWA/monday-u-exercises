@@ -38,7 +38,7 @@ program
 program
     .command("delete")
     .description("Delete specific task by index")
-    .argument("task <number>", "Todo number from the list")
+    .argument("<number>", "Todo number from the list")
     .action((cliInput) => {
         deleteTodo(cliInput);
     });
