@@ -25,7 +25,7 @@ export const handleInput = async (cliInput) => {
     } else if (cliInput.includes(",")) {
         multiPokemonIds(cliInput)
     } else {
-        addNewTask(taskInput);
+        addNewTask(cliInput);
     }
 };
 
