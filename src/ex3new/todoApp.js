@@ -2,9 +2,9 @@
 import { Command } from "commander";
 import {
     addNewTask,
+    readAndPrintAllTodos,
     setFolderAndFile,
 } from "./services.js";
-import {readFileLineByLine} from 'mondayu-logger-tom-portugez'
 
 const program = new Command();
 
@@ -41,15 +41,5 @@ program
     .action((cliInput) => {
         console.log(`Deleting task #${cliInput}`);
     });
-
-const readAndPrintAllTodos = async () => {
-    const todos = await readFileLineByLine(
-        process.env.FOLDER_NAME,
-        process.env.FILE_NAME
-    );
-    todos.forEach((todo, index) => {
-        todo && console.log(`${index + 1}) ${todo}.`);
-    });
-};
 
 program.parse(process.argv);
