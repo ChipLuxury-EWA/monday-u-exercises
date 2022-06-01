@@ -2,13 +2,14 @@
 import { Command } from "commander";
 import {
     addNewTask,
+    deleteTodo,
     readAndPrintAllTodos,
     setFolderAndFile,
 } from "./services.js";
 
 const program = new Command();
 
-program.name("Todo App V2").description("The best Todo app!").version("2.0.0");
+program.name("Todo App V2").description("The best Todo app!").version("3.0.0");
 
 program
     .command("init")
@@ -39,7 +40,7 @@ program
     .description("Delete specific task by index")
     .argument("task <number>", "Todo number from the list")
     .action((cliInput) => {
-        console.log(`Deleting task #${cliInput}`);
+        deleteTodo(cliInput);
     });
 
 program.parse(process.argv);
