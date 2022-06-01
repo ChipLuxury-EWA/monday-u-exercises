@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "echo \"to start use node.js to run index.js or chmod+x index.js\""
+    "start": "node index.js -h"
   },
   "keywords": [],
   "author": "",
