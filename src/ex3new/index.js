@@ -17,10 +17,22 @@ program
 program
     .command("get")
     .description("Get all your task, or specified task")
-    .option("-t, --taskNumber <number>","Get specified task by task number","1")
+    .option(
+        "-t, --taskNumber <number>",
+        "Get specified task by task number",
+        "1"
+    )
     .action((options) => {
-        console.log("getting all of your tasks")
-        console.log(`getting task #${options.taskNumber}`)
+        console.log("getting all of your tasks");
+        console.log(`getting task #${options.taskNumber}`);
+    });
+
+program
+    .command("delete")
+    .description("Delete specific task by index")
+    .argument("task <number>", "Todo number from the list")
+    .action((cliInput) => {
+        console.log(`Deleting task #${cliInput}`);
     });
 
 program.parse();
