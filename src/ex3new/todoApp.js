@@ -6,6 +6,7 @@ import {
     setFolderAndFile,
     handleInput,
 } from "./services.js";
+import chalkAnimation from "chalk-animation";
 
 const program = new Command();
 

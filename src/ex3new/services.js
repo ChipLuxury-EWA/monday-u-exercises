@@ -4,18 +4,19 @@ import {
     addNewLine,
     reWriteFile,
 } from "mondayu-logger-tom-portugez";
-
-import { PokemonClient } from "./pokemonClient.js";
-const pokemonClient = new PokemonClient();
-
+import chalk from "chalk";
 import dotenv from "dotenv";
+import { PokemonClient } from "./pokemonClient.js";
+
 dotenv.config();
+const pokemonClient = new PokemonClient();
 
 export const setFolderAndFile = async (folder, file) => {
     folderAndFileInit(folder, file);
 };
 
-const addNewTask = async (newTask) => {
+const addNewTask = (newTask) => {
+    console.log(chalk.bgCyan(`Adding ${newTask} to task list`));
     addNewLine(process.env.FOLDER_NAME, process.env.FILE_NAME, newTask);
 };
 
@@ -23,15 +24,16 @@ export const handleInput = async (cliInput) => {
     if (!isNaN(cliInput)) {
         pokemonIdInput(cliInput);
     } else if (cliInput.includes(",")) {
-        multiPokemonIds(cliInput)
+        multiPokemonIds(cliInput);
     } else {
         addNewTask(cliInput);
     }
 };
 
 const pokemonIdInput = async (cliInput) => {
+    console.log(chalk.bgWhiteBright.red(`A wild pokemon appeared...`));
     if (!cliInput.trim()) {
-        console.log("Input space error");
+        console.log(chalk.bgRed.black("Input space error"));
         return;
     }
     await pokemonClient.getPokemonNameById(cliInput);
@@ -39,6 +41,8 @@ const pokemonIdInput = async (cliInput) => {
 };
 
 const multiPokemonIds = async (cliInput) => {
+    console.log(chalk.bgWhiteBright.red(`Catching Them All`));
+
     // This const assignment handle input like "1,1, 2,3,4":
     // 1. remove spaces: "1,1,2,3,4"
     // 2. split to new array: [1,1,2,3,4]
@@ -51,12 +55,27 @@ const multiPokemonIds = async (cliInput) => {
 };
 
 export const readAndPrintAllTodos = async () => {
+    console.log(chalk.bgBlue.underline.white(`Getting all of your todos:`));
     const todos = await readFileLineByLine(
         process.env.FOLDER_NAME,
         process.env.FILE_NAME
     );
     todos.forEach((todo, index) => {
         todo && console.log(`${index + 1})\t${todo}.`);
+    });
+};
+
+export const printOneTaskWithStrikthrowLine = async (lineToDelete) => {
+    const todos = await readFileLineByLine(
+        process.env.FOLDER_NAME,
+        process.env.FILE_NAME
+    );
+    todos.forEach((todo, index) => {
+        if (index === lineToDelete) {
+            todo && console.log(chalk.strikethrough(`${index + 1})\t${todo}.`));
+        } else {
+            todo && console.log(`${index + 1})\t${todo}.`);
+        }
     });
 };
 
@@ -67,16 +86,16 @@ export const deleteTodo = async (todoNumber) => {
         process.env.FILE_NAME
     );
     if (todoNumber > file.length) {
-        console.log(`error - incorrect index`);
+        console.log(chalk.bgRed.black(`error - incorrect index`));
         return;
     } else {
-        console.log(`Deleting task #${todoNumber}: ${file[index]}`);
+        console.log(chalk.bgYellow.black(`Deleting task #${todoNumber}: ${file[index]}`));
         file.splice(index, 1);
         await reWriteFile(
             process.env.FOLDER_NAME,
             process.env.FILE_NAME,
             file.join("\n")
         );
-        readAndPrintAllTodos();
+        printOneTaskWithStrikthrowLine(index);
     }
 };
