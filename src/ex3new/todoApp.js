@@ -1,12 +1,11 @@
 #!/usr/bin/env node
-import { Command } from "commander";
 import {
     deleteTodo,
     readAndPrintAllTodos,
     setFolderAndFile,
     handleInput,
 } from "./services.js";
-import chalkAnimation from "chalk-animation";
+import { Command } from "commander";
 
 const program = new Command();
 
