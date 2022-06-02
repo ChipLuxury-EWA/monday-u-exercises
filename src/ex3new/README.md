@@ -27,7 +27,7 @@ When you finish it should look like this:
 
 ### Bonus
 
-- [ ] Publish your code as npm package and run it with npx
+- [x] Publish your code as npm package and run it with npx
 - [x] Add colors to your cli tool
 - [ ] Add Inquirer.js and make you cli tool interactive
 - [ ] Display pokemon image (ascii art)
