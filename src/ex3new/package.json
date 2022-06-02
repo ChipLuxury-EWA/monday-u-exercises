@@ -1,6 +1,6 @@
 {
   "name": "monday_u_todo_app",
-  "version": "1.0.13",
+  "version": "1.2.0",
   "description": "simple cli todo app ",
   "main": "index.js",
   "type": "module",
