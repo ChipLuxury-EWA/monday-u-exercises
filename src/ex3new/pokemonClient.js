@@ -1,3 +1,4 @@
+import Image from "ascii-art-image";
 import fetch from "node-fetch";
 const URL = "https://pokeapi.co/api/v2/pokemon";
 
@@ -12,6 +13,7 @@ export class PokemonClient {
             const ans = await response.json();
             return ans;
         } else if (response.status === 404) {
+            console.log("ERROR - fetching pokemon failed")
             return false;
         }
     };
@@ -22,7 +24,7 @@ export class PokemonClient {
         return this.pokemonNames;
     };
 
-    getPokemonImgByName = async (name) => {
+    getPokemonImgById = async (name) => {
         const pokemon = await this.fetchPokemonByIdOrName(name);
         if (pokemon === false) {
             return "";
@@ -42,7 +44,8 @@ export class PokemonClient {
         );
     };
 
-    printPokemonAscii = (img) => {
+    printPokemonAscii = async (id) => {
+        const img = await this.getPokemonImgById(id)
         const image = new Image({
             filepath: img,
             alphabet: "blocks",

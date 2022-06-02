@@ -20,27 +20,32 @@ const addNewTask = (newTask) => {
     addNewLine(process.env.FOLDER_NAME, process.env.FILE_NAME, newTask);
 };
 
-export const handleInput = async (cliInput) => {
+export const handleInput = async (cliInput, printPokemon) => {
     if (!isNaN(cliInput)) {
-        pokemonIdInput(cliInput);
+        pokemonIdInput(cliInput, printPokemon);
     } else if (cliInput.includes(",")) {
-        multiPokemonIds(cliInput);
+        multiPokemonIds(cliInput, printPokemon);
     } else {
         addNewTask(cliInput);
     }
 };
 
-const pokemonIdInput = async (cliInput) => {
+const pokemonIdInput = async (cliInput, printPokemon) => {
     if (!cliInput.trim()) {
         console.log(chalk.bgRed.black("Input space error"));
         return;
     }
     await pokemonClient.getPokemonNameById(cliInput);
-    console.log(chalk.bgWhiteBright.red(`A wild ${pokemonClient.pokemonNames} appeared...`));
+    console.log(
+        chalk.bgWhiteBright.red(
+            `A wild ${pokemonClient.pokemonNames} appeared...`
+        )
+    );
+    printPokemon && pokemonClient.printPokemonAscii(cliInput);
     addNewTask(`catch ${pokemonClient.pokemonNames}`); // pokemonName will also work with [0] indexing
 };
 
-const multiPokemonIds = async (cliInput) => {
+const multiPokemonIds = async (cliInput, printPokemon) => {
     console.log(chalk.bgWhiteBright.red(`Catching Them All`));
 
     // This const assignment handle input like "1,1, 2,3,4":
@@ -51,6 +56,7 @@ const multiPokemonIds = async (cliInput) => {
     await pokemonClient.catchThemAll(pokemonIds);
     pokemonClient.pokemonNames.forEach((pokemon) => {
         addNewTask(`catch ${pokemon}`);
+        printPokemon && pokemonClient.printPokemonAscii(pokemon);
     });
 };
 
@@ -89,7 +95,9 @@ export const deleteTodo = async (todoNumber) => {
         console.log(chalk.bgRed.black(`error - incorrect index`));
         return;
     } else {
-        console.log(chalk.bgYellow.black(`Deleting task #${todoNumber}: ${file[index]}`));
+        console.log(
+            chalk.bgYellow.black(`Deleting task #${todoNumber}: ${file[index]}`)
+        );
         file.splice(index, 1);
         await reWriteFile(
             process.env.FOLDER_NAME,
@@ -99,7 +107,3 @@ export const deleteTodo = async (todoNumber) => {
         printOneTaskWithStrikthrowLine(index);
     }
 };
-
-const printPokemonImage = () => {
-    
-}

@@ -24,8 +24,9 @@ program
     .command("add")
     .description("Add a new task, or enter id to catch pokemon")
     .argument("<string or number>", "task title, or id of pokemon")
-    .action((cliInput) => {
-        handleInput(cliInput);
+    .option("-p, --printPokemon", "set this to true will print ascii-art of the pokemon", false)
+    .action((cliInput, options) => {
+        handleInput(cliInput, options.printPokemon);
     });
 
 program
