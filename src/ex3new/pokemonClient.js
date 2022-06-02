@@ -5,6 +5,7 @@ export class PokemonClient {
     constructor() {
         this.pokemonNames = [];
     }
+
     fetchPokemonByIdOrName = async (id) => {
         const response = await fetch(`${URL}/${id}`);
         if (response.status === 200) {
@@ -14,11 +15,13 @@ export class PokemonClient {
             return false;
         }
     };
+
     getPokemonNameById = async (id) => {
         const pokemon = await this.fetchPokemonByIdOrName(id);
         this.pokemonNames = [pokemon.name];
         return this.pokemonNames;
     };
+
     getPokemonImgByName = async (name) => {
         const pokemon = await this.fetchPokemonByIdOrName(name);
         if (pokemon === false) {
@@ -28,6 +31,7 @@ export class PokemonClient {
             return this.pokemonImgUrl;
         }
     };
+
     catchThemAll = async (idsArray) => {
         this.pokemonNames = [];
         await Promise.all(
@@ -37,4 +41,16 @@ export class PokemonClient {
             })
         );
     };
+
+    printPokemonAscii = (img) => {
+        const image = new Image({
+            filepath: img,
+            alphabet: "blocks",
+        });
+    
+        image.write(function (err, rendered) {
+            console.log(rendered);
+        });
+    };
+
 }

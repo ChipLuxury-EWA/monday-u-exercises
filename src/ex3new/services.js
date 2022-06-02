@@ -31,12 +31,12 @@ export const handleInput = async (cliInput) => {
 };
 
 const pokemonIdInput = async (cliInput) => {
-    console.log(chalk.bgWhiteBright.red(`A wild pokemon appeared...`));
     if (!cliInput.trim()) {
         console.log(chalk.bgRed.black("Input space error"));
         return;
     }
     await pokemonClient.getPokemonNameById(cliInput);
+    console.log(chalk.bgWhiteBright.red(`A wild ${pokemonClient.pokemonNames} appeared...`));
     addNewTask(`catch ${pokemonClient.pokemonNames}`); // pokemonName will also work with [0] indexing
 };
 
@@ -99,3 +99,7 @@ export const deleteTodo = async (todoNumber) => {
         printOneTaskWithStrikthrowLine(index);
     }
 };
+
+const printPokemonImage = () => {
+    
+}
