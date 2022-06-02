@@ -1,5 +1,5 @@
 {
-  "name": "simple_todo_app",
+  "name": "monday_u_todo_app",
   "version": "1.0.0",
   "description": "simple cli todo app ",
   "main": "index.js",
@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node todoApp.js -h"
   },
+  "bin": "./todoApp.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
