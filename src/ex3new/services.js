@@ -7,6 +7,7 @@ import {
 import chalk from "chalk";
 import dotenv from "dotenv";
 import { PokemonClient } from "./pokemonClient.js";
+import inquirer from "inquirer";
 
 dotenv.config();
 const pokemonClient = new PokemonClient();
@@ -95,15 +96,35 @@ export const deleteTodo = async (todoNumber) => {
         console.log(chalk.bgRed.black(`error - incorrect index`));
         return;
     } else {
-        console.log(
-            chalk.bgYellow.black(`Deleting task #${todoNumber}: ${file[index]}`)
-        );
-        file.splice(index, 1);
-        await reWriteFile(
-            process.env.FOLDER_NAME,
-            process.env.FILE_NAME,
-            file.join("\n")
-        );
-        printOneTaskWithStrikthrowLine(index);
+        if (await deleteConfirmation(todoNumber, file[index])) {
+            printOneTaskWithStrikthrowLine(index);
+            file.splice(index, 1);
+            await reWriteFile(
+                process.env.FOLDER_NAME,
+                process.env.FILE_NAME,
+                file.join("\n")
+            );
+        }
+    }
+};
+
+const deleteConfirmation = async (taskNumber, taskTitle) => {
+    const answer = await inquirer.prompt({
+        name: "userInput",
+        type: "list",
+        message: `Are you shore you want to ${chalk.bgYellow.black(
+            "delete task #" + taskNumber + ":",
+            taskTitle,
+            "?",
+        )}`,
+        choices: ["Yes", "No"],
+        default() {
+            return false;
+        },
+    });
+    if (answer.userInput === "Yes") {
+        return true;
+    } else {
+        return false;
     }
 };
