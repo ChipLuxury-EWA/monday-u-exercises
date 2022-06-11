@@ -1,0 +1,26 @@
+{
+  "name": "ex4",
+  "version": "1.0.0",
+  "description": "You know what they say about #4: you'll remember it *for*ever (ha)",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server/server.js",
+    "client": "http-server ./dist -a localhost -p 8080 -s -o -c-1 --cors",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "http-server": "^14.1.1"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.1",
+    "nodemon": "^2.0.16"
+  }
+}
