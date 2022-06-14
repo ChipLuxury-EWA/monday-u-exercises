@@ -22,7 +22,7 @@ You can use your existing project (copy+paste then refactor), or use the boilerp
 - [x] Your `server.js` file should have all the express boilerplate and host your `dist` directory to any client that requests it (hint: you'll need to `.use` the `express.static` method)
 - [x] Create an `api.js` file that acts as the 'controller' of your backend, handling all the routes (endpoints)
 - [x] Create separate endpoints for (1) fetching all the todo items, (2) creating a new one, and (3) deleting an existing one (hint: don't forget `bodyParser`)
-- [ ] Move the pokemon fetching code to the backend - use `axios` instead of `fetch` for your requests
+- [x] Move the pokemon fetching code to the backend - use `axios` instead of `fetch` for your requests
 - [ ] On app load (i.e. when a user enters the page) it should fetch all the todo items and render them
 
 In terms of the front end, it will look the same as before:
