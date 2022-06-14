@@ -19,6 +19,7 @@ export const setFolderAndFile = async (folder, file) => {
 const addNewTask = (newTask) => {
     console.log(chalk.bgCyan(`Adding ${newTask} to task list`));
     addNewLine(process.env.FOLDER_NAME, process.env.FILE_NAME, newTask);
+    return true;
 };
 // export const addNewTask = (newTask) => {
 //     console.log(chalk.bgCyan(`Adding ${newTask} to task list`));
@@ -26,13 +27,15 @@ const addNewTask = (newTask) => {
 // };
 
 export const handleInput = async (req, res, next, printPokemon = false) => {
-    const task = req.body.task
+    const task = req.body.task;
     if (!isNaN(task)) {
         pokemonIdInput(task, printPokemon);
     } else if (task.includes(",")) {
         multiPokemonIds(task, printPokemon);
     } else {
-        addNewTask(task);
+        if (addNewTask(task)) {
+            res.status(200).json(`added '${req.body.task}' to task list`);
+        }
     }
 };
 
@@ -75,7 +78,7 @@ export const readAndPrintAllTodos = async (req, res, next) => {
     todos.forEach((todo, index) => {
         todo && console.log(`${index + 1})\t${todo}.`);
     });
-    res.status(200).json(todos)
+    res.status(200).json(todos);
 };
 
 export const printOneTaskWithStrikthrowLine = async (lineToDelete) => {
@@ -92,45 +95,23 @@ export const printOneTaskWithStrikthrowLine = async (lineToDelete) => {
     });
 };
 
-export const deleteTodo = async (todoNumber) => {
-    const index = todoNumber - 1;
+export const deleteTodo = async (req, res) => {
+    const index = req.params.id - 1;
     const file = await readFileLineByLine(
         process.env.FOLDER_NAME,
         process.env.FILE_NAME
     );
-    if (todoNumber > file.length) {
+    if (req.params.id > file.length - 1) {
         console.log(chalk.bgRed.black(`error - incorrect index`));
-        return;
+        res.status(400).json("wrong task id");
     } else {
-        if (await deleteConfirmation(todoNumber, file[index])) {
-            printOneTaskWithStrikthrowLine(index);
-            file.splice(index, 1);
-            await reWriteFile(
-                process.env.FOLDER_NAME,
-                process.env.FILE_NAME,
-                file.join("\n")
-            );
-        }
-    }
-};
-
-const deleteConfirmation = async (taskNumber, taskTitle) => {
-    const answer = await inquirer.prompt({
-        name: "userInput",
-        type: "list",
-        message: `Are you shore you want to ${chalk.bgYellow.black(
-            "delete task #" + taskNumber + ":",
-            taskTitle,
-            "?",
-        )}`,
-        choices: ["Yes", "No"],
-        default() {
-            return false;
-        },
-    });
-    if (answer.userInput === "Yes") {
-        return true;
-    } else {
-        return false;
+        printOneTaskWithStrikthrowLine(index);
+        const deletedTask = file.splice(index, 1);
+        await reWriteFile(
+            process.env.FOLDER_NAME,
+            process.env.FILE_NAME,
+            file.join("\n")
+        );
+        res.status(200).json(`Deleted task #${req.params.id}: ${deletedTask}`);
     }
 };
