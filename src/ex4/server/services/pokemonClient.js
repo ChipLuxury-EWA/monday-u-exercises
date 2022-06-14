@@ -21,6 +21,7 @@ export class PokemonClient {
     getPokemonNameById = async (id) => {
         const pokemon = await this.fetchPokemonByIdOrName(id);
         this.pokemonNames = [pokemon.name];
+        
     };
     getPokemonImgByName = async (name) => {
         const pokemon = await this.fetchPokemonByIdOrName(name);

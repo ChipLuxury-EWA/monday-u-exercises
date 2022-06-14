@@ -16,7 +16,7 @@ export const setFolderAndFile = async (folder, file) => {
     folderAndFileInit(folder, file);
 };
 
-const addNewTask = (newTask) => {
+const addNewTask = (newTask, res) => {
     console.log(chalk.bgCyan(`Adding ${newTask} to task list`));
     addNewLine(process.env.FOLDER_NAME, process.env.FILE_NAME, newTask);
     return true;
@@ -26,23 +26,24 @@ const addNewTask = (newTask) => {
 //     addNewLine(process.env.FOLDER_NAME, process.env.FILE_NAME, newTask);
 // };
 
-export const handleInput = async (req, res, next, printPokemon = false) => {
+export const handleInput = async (req, res, next) => {
     const task = req.body.task;
     if (!isNaN(task)) {
-        pokemonIdInput(task, printPokemon);
+        await pokemonIdInput(task) &&
+            res.status(200).json(`added 'catch ${pokemonClient.pokemonNames}' to task list`);
     } else if (task.includes(",")) {
-        multiPokemonIds(task, printPokemon);
+        await multiPokemonIds(task) && 
+        res.status(200).json(`catching them all: '${pokemonClient.pokemonNames}'`);
     } else {
-        if (addNewTask(task)) {
+        addNewTask(task) &&
             res.status(200).json(`added '${req.body.task}' to task list`);
-        }
     }
 };
 
-const pokemonIdInput = async (cliInput, printPokemon) => {
+const pokemonIdInput = async (cliInput) => {
     if (!cliInput.trim()) {
         console.log(chalk.bgRed.black("Input space error"));
-        return;
+        return res.status(422).json("Input space error");
     }
     await pokemonClient.getPokemonNameById(cliInput);
     console.log(
@@ -50,11 +51,11 @@ const pokemonIdInput = async (cliInput, printPokemon) => {
             `A wild ${pokemonClient.pokemonNames} appeared...`
         )
     );
-    printPokemon && pokemonClient.printPokemonAscii(cliInput);
     addNewTask(`catch ${pokemonClient.pokemonNames}`); // pokemonName will also work with [0] indexing
+    return true;
 };
 
-const multiPokemonIds = async (cliInput, printPokemon) => {
+const multiPokemonIds = async (cliInput, res) => {
     console.log(chalk.bgWhiteBright.red(`Catching Them All`));
 
     // This const assignment handle input like "1,1, 2,3,4":
@@ -64,9 +65,9 @@ const multiPokemonIds = async (cliInput, printPokemon) => {
     const pokemonIds = [...new Set(cliInput.replace(/\s/g, "").split(","))];
     await pokemonClient.catchThemAll(pokemonIds);
     pokemonClient.pokemonNames.forEach((pokemon) => {
-        addNewTask(`catch ${pokemon}`);
-        printPokemon && pokemonClient.printPokemonAscii(pokemon);
+        addNewTask(`catch ${pokemon}`, res);
     });
+    return true
 };
 
 export const readAndPrintAllTodos = async (req, res, next) => {
