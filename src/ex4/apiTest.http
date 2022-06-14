@@ -19,3 +19,12 @@ Content-Type: application/json
 # @name deleteTask
 DELETE http://localhost:3700/task/1 HTTP/1.1
 ###
+
+# @name catchPokemon
+POST http://localhost:3700/task HTTP/1.1
+Content-Type: application/json
+
+{
+    "task" : "2,3,4"
+}
+###

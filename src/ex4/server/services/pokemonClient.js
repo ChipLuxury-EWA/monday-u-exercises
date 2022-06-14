@@ -1,13 +1,18 @@
+import axios from 'axios'
+
+
 const URL = "https://pokeapi.co/api/v2/pokemon";
+
+
 
 export class PokemonClient {
     constructor() {
         this.pokemonNames = [];
     }
     fetchPokemonByIdOrName = async (id) => {
-        const response = await fetch(`${URL}/${id}`);
+        const response = await axios.get(`${URL}/${id}`);
         if (response.status === 200) {
-            const ans = await response.json();
+            const ans = await response.data;
             return ans;
         } else if (response.status === 404) {
             return false;
