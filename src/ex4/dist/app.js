@@ -1,6 +1,5 @@
 import { ItemManager } from "./itemManger.js";
-import { PokemonClient } from "./pokemonClient.js";
-
+import { PokemonClient } from "./clients/pokemonClient.js";
 import {
     CLEAR_BUTTON_CLASS,
     COUNTER_CLASS,
@@ -22,44 +21,10 @@ class Main {
             this.todoList.appendChild(taskItem);
         });
     };
+
     addTodo = async (event) => {
-        event.preventDefault();
-        const taskInput = this.todoInput.value;
-        if (taskInput === "") {
-            alert("ERROR - no empty task is allowed");
-            return;
-            // TODO improve error handling in the pokemon client
-        } else if (
-            taskInput === POKEMON_ID_ZERO ||
-            taskInput > TOP_EDGE_POKEMON_ID
-        ) {
-            itemManager.addTask("Learn Pokemon's ID");
-        } else if (!isNaN(taskInput)) {
-            if (!taskInput.trim()) {
-                alert("Input space error");
-                return;
-            }
-            await pokemonClient.getPokemonNameById(taskInput);
-            itemManager.addTask(`catch ${pokemonClient.pokemonNames}`); // pokemonName will also work with [0] indexing
-        } else if (taskInput.includes(",")) {
-            // This const assignment handle input like "1,1, 2,3,4":
-            // 1. remove spaces: "1,1,2,3,4"
-            // 2. split to new array: [1,1,2,3,4]
-            // 3. remove duplicate: [1,2,3,4]
-            const pokemonIds = [
-                ...new Set(taskInput.replace(/\s/g, "").split(",")),
-            ];
-            await pokemonClient.catchThemAll(pokemonIds);
-            pokemonClient.pokemonNames.forEach((pokemon) => {
-                itemManager.addTask(`catch ${pokemon}`);
-            });
-        } else {
-            itemManager.addTask(taskInput);
-        }
-        this.renderTasks();
-        // clearing the input:
-        this.todoInput.value = "";
-    };
+        event.preventDefault()
+    }
 
     createTodoDiv = async (todoInput) => {
         const newTodoDiv = document.createElement("div");
@@ -199,13 +164,7 @@ class Main {
         itemManager.clearAllTasks();
     };
 
-    pingServer = async () => {
-        const ans = await fetch("http://localhost:3700/health");
-        const msg = await ans.json()
-        console.log(msg);
-    };
-
-    init() {
+    async init() {
         //SELECTORS:
         this.todoInput = document.querySelector(TODO_INPUT_CLASS);
         this.todoButton = document.querySelector(TODO_BUTTON_CLASS);
@@ -229,8 +188,8 @@ class Main {
         observer.observe(this.todoList, config);
 
         //render all tasks:
-        itemManager.getAll()
-        this.renderTasks()
+        await itemManager.getAll();
+        this.renderTasks();
     }
 }
 

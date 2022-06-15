@@ -11,8 +11,6 @@ router
     .route("/")
     .get(readAndPrintAllTodos)
     .post(handleInput)
-    .put()
-    .delete(deleteTodo);
     
 router.
     route("/:id")
