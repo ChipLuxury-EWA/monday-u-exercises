@@ -18,6 +18,7 @@ class Main {
         await itemManager.getAll();
         this.todoList.innerHTML = ""; // prevent double rendering..
         itemManager.tasksArray.forEach(async (task) => {
+            if (task === "") return
             const taskItem = await this.createTodoDiv(task);
             this.todoList.appendChild(taskItem);
         });

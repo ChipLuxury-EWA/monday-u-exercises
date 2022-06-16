@@ -18,7 +18,6 @@ export const deleteTask = async (id) => {
 };
 
 export const addTask = async (taskTitle) => {
-    console.log(taskTitle);
     const ans = await fetch(`${url}`, {
         method: "POST",
         headers: {
