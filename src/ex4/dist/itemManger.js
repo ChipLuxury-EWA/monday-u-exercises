@@ -14,7 +14,7 @@ export class ItemManager {
 
     addTask = async (task) => {
         if (this.tasksArray.includes(task)) {
-            alert(`You already have a task to ${task}!`);
+            // alert(`You already have a task to ${task}!`);
             return false
         } else {
             return await addTask(task)

@@ -31,7 +31,11 @@ class Main {
             this.todoInput.value = ""
             this.renderTasks()
         } else {
-            confirm('Error adding task')
+            this.todoInput.value = "Error adding task"
+            setTimeout(() => {
+                this.todoInput.value = ""
+                
+            }, 3000);
         }
     };
 
@@ -194,7 +198,6 @@ class Main {
         this.todoList.onclick = this.deleteOrCompleteTask;
         this.clearAllButton.onclick = this.clearAllTasks;
         this.filterOption.onclick = this.filterTodo;
-        this.healthCheckButton.onclick = this.pingServer;
 
         // Updating pending message on each task change(className or new item):
         const config = { attributes: true, childList: true, subtree: true };
