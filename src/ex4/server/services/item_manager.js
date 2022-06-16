@@ -27,6 +27,7 @@ const addNewTask = (newTask, res) => {
 // };
 
 export const handleInput = async (req, res, next) => {
+    console.log(req.body.task)
     const task = req.body.task;
     if (!isNaN(task)) {
         await pokemonIdInput(task) &&
@@ -98,6 +99,7 @@ export const printOneTaskWithStrikthrowLine = async (lineToDelete) => {
 
 export const deleteTodo = async (req, res) => {
     const index = req.params.id - 1;
+    
     const file = await readFileLineByLine(
         process.env.FOLDER_NAME,
         process.env.FILE_NAME

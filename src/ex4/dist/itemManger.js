@@ -1,4 +1,4 @@
-import { getAllTasks } from "./clients/item_client.js";
+import { getAllTasks, deleteTask,addTask } from "./clients/item_client.js";
 
 export class ItemManager {
     constructor() {
@@ -8,13 +8,16 @@ export class ItemManager {
         this.tasksArray = [];
     };
 
-    removeTask = (task) => {};
+    removeTask = async (task) => {
+        return await deleteTask(task)
+    };
 
-    addTask = (task) => {
+    addTask = async (task) => {
         if (this.tasksArray.includes(task)) {
             alert(`You already have a task to ${task}!`);
+            return false
         } else {
-            this.tasksArray.push(task);
+            return await addTask(task)
         }
     };
 

@@ -14,7 +14,8 @@ import {
 } from "./constants.js";
 
 class Main {
-    renderTasks = () => {
+    renderTasks = async () => {
+        await itemManager.getAll();
         this.todoList.innerHTML = ""; // prevent double rendering..
         itemManager.tasksArray.forEach(async (task) => {
             const taskItem = await this.createTodoDiv(task);
@@ -23,8 +24,15 @@ class Main {
     };
 
     addTodo = async (event) => {
-        event.preventDefault()
-    }
+        event.preventDefault();
+        const ans = await itemManager.addTask(this.todoInput.value)
+        if (ans) {
+            this.todoInput.value = ""
+            this.renderTasks()
+        } else {
+            confirm('Error adding task')
+        }
+    };
 
     createTodoDiv = async (todoInput) => {
         const newTodoDiv = document.createElement("div");
@@ -77,18 +85,23 @@ class Main {
         }
     };
 
-    deleteOrCompleteTask = (event) => {
+    deleteOrCompleteTask = async (event) => {
         const item = event.target;
         if (item.classList[0] === "trash-button") {
-            const todo = item.parentElement;
-            todo.classList.add("fall");
-            setTimeout(() => {
-                itemManager.removeTask(todo.childNodes[0].innerHTML);
-                todo.remove();
-                // this.renderTasks() //comment out because of performance.
-                // The readme file says to render again from the array after each delete,
-                // my logic delete the dom element so no need to re-render.
-            }, 500);
+            const taskTitle = item.parentElement.childNodes[0].innerHTML;
+            const taskIndex = itemManager.tasksArray.indexOf(taskTitle) + 1;
+            const didServerDeleteTask = await itemManager.removeTask(taskIndex);
+            if (didServerDeleteTask) {
+                const todo = item.parentElement;
+                todo.classList.add("fall");
+                setTimeout(() => {
+                    // itemManager.removeTask(todo.childNodes[0].innerHTML);
+                    todo.remove();
+                    this.renderTasks() //comment out because of performance.
+                    // The readme file says to render again from the array after each delete,
+                    // my logic delete the dom element so no need to re-render.
+                }, 500);
+            }
         } else if (item.classList[0] === "complete-button") {
             const todo = item.parentElement;
             todo.classList.toggle(TASK_COMPLETED_CLASS_NAME);
@@ -188,7 +201,6 @@ class Main {
         observer.observe(this.todoList, config);
 
         //render all tasks:
-        await itemManager.getAll();
         this.renderTasks();
     }
 }
