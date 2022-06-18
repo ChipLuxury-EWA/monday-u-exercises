@@ -1,0 +1,22 @@
+{
+  "name": "ex5",
+  "version": "1.0.0",
+  "description": "ex5",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "express": "^4.17.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.21.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16",
+    "sequelize-cli": "^6.4.1"
+  }
+}
