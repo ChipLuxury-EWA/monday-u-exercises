@@ -32,7 +32,7 @@ class Main {
         items.forEach(item => {
             const listItem = document.createElement("li");
             listItem.classList.add('list-item');
-            listItem.innerHTML = item;
+            listItem.innerHTML = item.taskName;
 
             const listItemDeleteButton = this._createDeleteButton(item);
             listItem.appendChild(listItemDeleteButton);

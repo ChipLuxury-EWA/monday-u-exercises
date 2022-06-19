@@ -2,7 +2,6 @@ class ItemClient {
     getItems = async () => {
         const response = await fetch('/items')
         const todos = await response.json()
-
         return todos
     }
 

@@ -4,7 +4,6 @@ const { Task } = require("../db/models");
 class ItemManager {
     constructor() {
         this.pokemonClient = new PokemonClient();
-        // this.items = []; //TODO: remove, items should be stored to DB using Item sequelize model
         this.items =  this.getItems()
     }
 
