@@ -1,9 +1,6 @@
-import axios from 'axios'
-
+import axios from "axios";
 
 const URL = "https://pokeapi.co/api/v2/pokemon";
-
-
 
 export class PokemonClient {
     constructor() {
@@ -21,7 +18,6 @@ export class PokemonClient {
     getPokemonNameById = async (id) => {
         const pokemon = await this.fetchPokemonByIdOrName(id);
         this.pokemonNames = [pokemon.name];
-        
     };
     getPokemonImgByName = async (name) => {
         const pokemon = await this.fetchPokemonByIdOrName(name);
