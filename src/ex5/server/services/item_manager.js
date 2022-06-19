@@ -13,11 +13,12 @@ class ItemManager {
     
 
     handleItem = async (item) => {
-        if (this._isNumber(item)) {
-            return await this.fetchAndAddPokemon(item);
+        
+        if (this._isNumber(item.taskName)) {
+            return await this.fetchAndAddPokemon(item.taskName);
         }
-        if (this._isList(item)) {
-            return await this.fetchAndAddManyPokemon(item);
+        if (this._isList(item.taskName)) {
+            return await this.fetchAndAddManyPokemon(item.taskName);
         }
 
         this.addItem(item);
@@ -28,7 +29,7 @@ class ItemManager {
     };
 
     addPokemonItem = (pokemon) => {
-        this.addItem(`Catch ${pokemon.name}`);
+        this.addItem({taskName: `Catch ${pokemon.name}`});
     };
 
     fetchAndAddPokemon = async (pokemonId) => {

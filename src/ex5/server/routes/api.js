@@ -7,7 +7,7 @@ router.get('/items', async (req, res) => {
 })
 
 router.post('/item', async (req, res) => {
-    await itemManager.handleItem(req.body.item)
+    await itemManager.handleItem(req.body)
     res.end()
 })
 
