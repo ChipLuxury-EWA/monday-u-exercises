@@ -44,7 +44,7 @@ class ItemManager {
     fetchAndAddManyPokemon = async (inputValue) => {
         try {
             const pokemons = await this.pokemonClient.getManyPokemon(
-                inputValue.replace("/ /g", "").split(",")
+                [...new Set(inputValue.replace(/\s/g, "").split(","))]
             );
             pokemons.forEach(this.addPokemonItem);
         } catch (error) {
