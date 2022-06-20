@@ -4,16 +4,14 @@ const { Task } = require("../db/models");
 class ItemManager {
     constructor() {
         this.pokemonClient = new PokemonClient();
-        this.items =  this.getItems()
+        this.items = this.getItems();
     }
 
     getItems = async () => {
-        return await Task.findAll()
+        return await Task.findAll();
     };
-    
 
     handleItem = async (item) => {
-        
         if (this._isNumber(item.taskName)) {
             return await this.fetchAndAddPokemon(item.taskName);
         }
@@ -25,11 +23,11 @@ class ItemManager {
     };
 
     addItem = (item) => {
-        Task.create(item)
+        Task.create(item);
     };
 
     addPokemonItem = (pokemon) => {
-        this.addItem({taskName: `Catch ${pokemon.name}`});
+        this.addItem({ taskName: `Catch ${pokemon.name}` });
     };
 
     fetchAndAddPokemon = async (pokemonId) => {
@@ -43,9 +41,9 @@ class ItemManager {
 
     fetchAndAddManyPokemon = async (inputValue) => {
         try {
-            const pokemons = await this.pokemonClient.getManyPokemon(
-                [...new Set(inputValue.replace(/\s/g, "").split(","))]
-            );
+            const pokemons = await this.pokemonClient.getManyPokemon([
+                ...new Set(inputValue.replace(/\s/g, "").split(",")),
+            ]);
             pokemons.forEach(this.addPokemonItem);
         } catch (error) {
             console.error(error);
@@ -55,8 +53,13 @@ class ItemManager {
         }
     };
 
-    deleteItem = (item) => {
-        this.items = this.items.filter((i) => i !== item);
+    deleteItem = async (item) => {
+        const ans = await Task.destroy({ where: { id: item.id } });
+        if (ans === 1) {
+            return `delete task #${item.id}`
+        } else {
+            return `error delete task #${item.id}`
+        }
     };
 
     _isNumber = (value) => !isNaN(Number(value));

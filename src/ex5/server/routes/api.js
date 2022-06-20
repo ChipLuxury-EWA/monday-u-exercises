@@ -11,9 +11,8 @@ router.post('/item', async (req, res) => {
     res.end()
 })
 
-router.delete('/item', (req, res) => {
-    itemManager.deleteItem(req.body.item)
-    res.end()
+router.delete('/item', async (req, res) => {    
+    res.send( await itemManager.deleteItem(req.body))
 })
 
 module.exports = router
