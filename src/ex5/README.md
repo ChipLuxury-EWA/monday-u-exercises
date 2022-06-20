@@ -33,7 +33,7 @@ Following pre-requisites were covered in our last workshop.
 - [x] Install Sequelize CLI. [Installing the CLI](https://sequelize.org/docs/v6/other-topics/migrations/)
 - [x] Initialize Sequelize using `npx sequelize-cli init` inside 'src/server/db' folder 
 - [x] Create Items table using [Sequelize migration](https://sequelize.org/docs/v6/other-topics/migrations/#creating-the-first-model-and-migration) - a new table with id and ItemName fields
-- [ ] Modify `item_manager.js`: remove items array and modify all item operations to use Item model
+- [x] Modify `item_manager.js`: remove items array and modify all item operations to use Item model
 - [ ] Create and run a separate migration for adding a `status` column (BOOLEAN) to Items table in your DB
 - [ ] Add checkbox to each item in UI to indicate its status (Done vs not)
 - [ ] Modify client and server code to support persistence of the new Item status 
