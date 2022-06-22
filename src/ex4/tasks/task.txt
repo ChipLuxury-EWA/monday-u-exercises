@@ -2,4 +2,5 @@ catch pikachu
 catch vileplume
 catch raichu
 catch pikachu
-test
+catch mankey
+catch primeape

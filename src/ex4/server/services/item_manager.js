@@ -7,7 +7,7 @@ import {
 } from "mondayu-logger-tom-portugez";
 import chalk from "chalk";
 import dotenv from "dotenv";
-import { PokemonClient } from "./pokemonClient.js";
+import { PokemonClient } from "../clients/pokemon_client.js";
 
 dotenv.config();
 const pokemonClient = new PokemonClient();
@@ -21,10 +21,6 @@ const addNewTask = (newTask, res) => {
     addNewLine(process.env.FOLDER_NAME, process.env.FILE_NAME, newTask);
     return true;
 };
-// export const addNewTask = (newTask) => {
-//     console.log(chalk.bgCyan(`Adding ${newTask} to task list`));
-//     addNewLine(process.env.FOLDER_NAME, process.env.FILE_NAME, newTask);
-// };
 
 export const handleInput = async (req, res, next) => {
     console.log(req.body.task)
