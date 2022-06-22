@@ -1,6 +1,0 @@
-catch pikachu
-catch vileplume
-catch raichu
-catch pikachu
-catch mankey
-catch primeape
