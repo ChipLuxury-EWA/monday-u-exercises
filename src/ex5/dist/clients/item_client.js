@@ -13,6 +13,14 @@ class ItemClient {
         });
     };
 
+    updateItem = async (item) => {
+        await fetch("/item", {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id: item.id, status: !item.status }),
+        });
+    };
+
     deleteItem = async (item) => {
         await fetch("/item", {
             method: "DELETE",

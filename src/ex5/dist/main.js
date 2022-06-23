@@ -24,6 +24,11 @@ class Main {
         await this.renderItems();
     };
 
+    updateItem = async (item) => {
+        await this.itemClient.updateItem(item);
+        await this.renderItems();
+    };
+
     renderItems = async () => {
         const list = document.getElementById("list");
         list.innerHTML = "";
@@ -33,10 +38,14 @@ class Main {
         items.forEach((item) => {
             const listItem = document.createElement("li");
             listItem.classList.add("list-item");
+            item.status
+                ? listItem.classList.add("completed")
+                : listItem.classList.remove("completed");
             listItem.innerHTML = item.taskName;
 
             const listItemDeleteButton = this._createDeleteButton(item);
-            listItem.appendChild(listItemDeleteButton);
+            const listItemUpdateButton = this._createUpdateButton(item);
+            listItem.append(listItemDeleteButton, listItemUpdateButton);
             list.appendChild(listItem);
         });
     };
@@ -46,6 +55,15 @@ class Main {
         button.src = "./images/delete_icon.svg";
         button.classList.add("list-item-delete-button");
         button.addEventListener("click", (_) => this.deleteItem(item));
+
+        return button;
+    };
+
+    _createUpdateButton = (item) => {
+        const button = document.createElement("img");
+        button.src = "./images/check_icon.svg";
+        button.classList.add("list-item-update-button");
+        button.addEventListener("click", (_) => this.updateItem(item));
 
         return button;
     };

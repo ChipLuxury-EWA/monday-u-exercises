@@ -18,7 +18,10 @@ module.exports = (sequelize, DataTypes) => {
                 primaryKey: true,
                 autoIncrement: true,
             },
-            status: { type: DataTypes.BOOLEAN, defaultValue: false },
+            status: {
+                type: DataTypes.BOOLEAN,
+                defaultValue: false,
+            },
             taskName: DataTypes.STRING,
         },
         {
