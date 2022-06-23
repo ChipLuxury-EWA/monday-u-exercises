@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
                 defaultValue: false,
             },
             taskName: DataTypes.STRING,
+            done: DataTypes.DATE,
         },
         {
             sequelize,

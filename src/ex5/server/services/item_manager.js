@@ -66,9 +66,9 @@ class ItemManager {
     };
 
     updateItem = async (item) => {
-        console.log(`Update item ${item.id} status to ${item.status}`)
+        console.log(`Update item ${item.id} status to ${item.status}`);
         const ans = await Task.update(
-            { status: item.status },
+            { status: item.status, done: item.done },
             { where: { id: item.id } }
         );
         return `updated rows: ${ans}`;
