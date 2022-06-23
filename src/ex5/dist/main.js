@@ -35,13 +35,13 @@ class Main {
 
         const items = await this.itemClient.getItems();
 
-        items.forEach((item) => {
+        items.forEach((item, index) => {
             const listItem = document.createElement("li");
             listItem.classList.add("list-item");
             item.status
                 ? listItem.classList.add("completed")
                 : listItem.classList.remove("completed");
-            listItem.innerHTML = item.taskName;
+            listItem.innerHTML = `${index+1}) ${item.taskName}`;
 
             const listItemDeleteButton = this._createDeleteButton(item);
             const listItemUpdateButton = this._createUpdateButton(item);
