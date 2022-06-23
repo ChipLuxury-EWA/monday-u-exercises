@@ -47,7 +47,7 @@ Here is an example how it can look on the client side:
 
 ### Bonus
 
-- [ ] Add "Done" timestamp
+- [x] Add "Done" timestamp
 - [ ] Add index to the Items table (which columns compose the index?) 
 - [ ] Add server validation - create a new item only if not exists (Use transaction)
 - [ ] Add edit capabilities to an item. 
