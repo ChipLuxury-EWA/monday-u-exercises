@@ -9,6 +9,16 @@ content-type: application/json
 }
 
 ###
+
+PUT http://localhost:3042/item HTTP/1.1
+content-type: application/json
+
+{
+    "id": "69",
+    "status" : false
+}
+
+###
 DELETE http://localhost:3042/item HTTP/1.1
 content-type: application/json
 

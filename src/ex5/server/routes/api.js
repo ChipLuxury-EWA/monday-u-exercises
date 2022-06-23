@@ -10,6 +10,10 @@ router.post("/item", async (req, res) => {
     res.send(await itemManager.handleItem(req.body));
 });
 
+router.put("/item", async (req, res) => {
+    res.send(await itemManager.updateItem(req.body));
+});
+
 router.delete("/item", async (req, res) => {
     res.send(await itemManager.deleteItem(req.body));
 });

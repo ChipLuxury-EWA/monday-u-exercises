@@ -65,6 +65,15 @@ class ItemManager {
         }
     };
 
+    updateItem = async (item) => {
+        console.log(`Update item ${item.id} status to ${item.status}`)
+        const ans = await Task.update(
+            { status: item.status },
+            { where: { id: item.id } }
+        );
+        return `updated rows: ${ans}`;
+    };
+
     _isNumber = (value) => !isNaN(Number(value));
     _isList = (value) => value.split(",").every(this._isNumber);
 }
