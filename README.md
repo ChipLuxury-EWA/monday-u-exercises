@@ -31,7 +31,7 @@ This will make your project:
 ### The requirements:
 - [x] Remove `app.use(express.static(path.join(__dirname, 'dist')))` from your `server.js` file
 - [ ] Delete `src/server/dist` **ONLY** when your new client is up and running 
-- [ ] Initialize your React project in the `src` folder using [create-react-app](https://create-react-app.dev/docs/getting-started/) with the name `client`
+- [x] Initialize your React project in the `src` folder using [create-react-app](https://create-react-app.dev/docs/getting-started/) with the name `client`
 - [ ] Decompose your Todo App into components (controlled and uncontrolled)
 - [ ] Re-Implement the Todo App using hooks
 - [ ] Use [**propTypes** & **defaultProps**](https://reactjs.org/docs/typechecking-with-proptypes.html) to add type-checking to your components
