@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "storybook": "start-storybook -p 6006 -s public"
   },
   "author": "",
   "license": "ISC",
