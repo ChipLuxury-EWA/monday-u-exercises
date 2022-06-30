@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./userInput.css";
 
 import { TextField } from "monday-ui-react-core";
-import { Add, Drag } from "monday-ui-react-core/dist/allIcons";
+import { Add } from "monday-ui-react-core/dist/allIcons";
 import "monday-ui-react-core/dist/main.css";
 
 export const UserInput = ({ loading, onIconClick, value, onChange }) => {
@@ -22,7 +22,7 @@ export const UserInput = ({ loading, onIconClick, value, onChange }) => {
                 }}
                 onIconClick={(task) => onIconClick(task)}
                 clearOnIconClick={true}
-                size={TextField.sizes.MEDIUM}
+                size={TextField.sizes.LARGE}
                 autoFocus={true}
                 required={true}
             />
