@@ -10,10 +10,10 @@ const Template = (args) => <TaskList {...args} />;
 export const TasksExample = Template.bind({});
 TasksExample.args = {
     tasksItems: [
-        { title: "task 1" },
-        { title: "task 2" },
-        { title: "task 3", done: true },
-        { title: "task 4", loading: true },
+        { title: "task 1", id: 1342 },
+        { title: "task 2", id: 23452 },
+        { title: "task 3", done: true, id: 32345 },
+        { title: "task 4", loading: true, id: 42345 },
     ],
 };
 

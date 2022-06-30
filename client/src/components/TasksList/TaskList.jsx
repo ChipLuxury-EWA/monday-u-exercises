@@ -8,14 +8,14 @@ import { Divider, Loader } from "monday-ui-react-core";
 export const TaskList = ({ tasksItems, loadingTasks }) => {
     const dynamicList = tasksItems.map((item) => {
         return (
-            <>
+            <div key={item.id}>
                 <TaskItem
                     task={item.title}
                     done={item.done}
                     loading={item.loading}
                 />
                 <Divider />
-            </>
+            </div>
         );
     });
 
