@@ -1,7 +1,7 @@
 import { TaskList } from "../TaskList";
 
 export default {
-    title: "TodoApp/TaskList",
+    title: "Todo App/TaskList",
     component: TaskList,
 };
 

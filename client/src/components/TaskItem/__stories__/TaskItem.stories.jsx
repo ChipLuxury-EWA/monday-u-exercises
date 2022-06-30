@@ -2,7 +2,7 @@ import React from "react";
 import { TaskItem } from "../TaskItem";
 
 export default {
-    title: "TodoApp/TaskItem",
+    title: "Todo App/TaskItem",
     component: TaskItem,
 };
 

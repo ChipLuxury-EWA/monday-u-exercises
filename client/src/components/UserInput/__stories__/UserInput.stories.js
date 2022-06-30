@@ -2,7 +2,7 @@ import React from "react";
 import { UserInput } from "../UserInput";
 
 export default {
-    title: "TodoApp/userInput",
+    title: "Todo App/User Input",
     component: UserInput,
 };
 
