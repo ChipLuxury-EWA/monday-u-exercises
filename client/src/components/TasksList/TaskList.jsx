@@ -1,14 +1,35 @@
+import React from "react";
 import { TaskItem } from "../TaskItem/TaskItem";
+import PropTypes from "prop-types";
 
-import { Divider } from "monday-ui-react-core";
 import "monday-ui-react-core/dist/main.css";
+import { Divider, Loader } from "monday-ui-react-core";
 
-//https://github.com/wfp/designsystem/blob/master/src/documentation/ApplicationPage/ApplicationPage.stories.js
+export const TaskList = ({ tasksItems, loadingTasks }) => {
+    const dynamicList = tasksItems.map((item) => {
+        return (
+            <>
+                <TaskItem
+                    task={item.title}
+                    done={item.done}
+                    loading={item.loading}
+                />
+                <Divider />
+            </>
+        );
+    });
 
-export const TaskList = ({...props}) => {
     return (
-        <div>
-            
-        </div>
+        <>{loadingTasks ? <Loader size={150} hasBackground /> : dynamicList}</>
     );
+};
+
+TaskList.propTypes = {
+    tasksItems: PropTypes.array,
+    loadingTasks: PropTypes.bool,
+};
+
+TaskList.defaultProps = {
+    tasksItems: [],
+    loadingTasks: false,
 };
