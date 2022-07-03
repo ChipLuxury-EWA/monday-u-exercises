@@ -20,7 +20,7 @@ export const UserInput = ({ loading, onIconClick, value, onChange }) => {
                     setTask(value);
                     onChange(task);
                 }}
-                onIconClick={(task) => onIconClick(task)}
+                onIconClick={(value) => onIconClick(value)}
                 clearOnIconClick={true}
                 size={TextField.sizes.LARGE}
                 autoFocus={true}

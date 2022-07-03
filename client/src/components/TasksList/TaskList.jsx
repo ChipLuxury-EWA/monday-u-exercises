@@ -11,15 +11,19 @@ export const TaskList = ({ tasksItems, loadingTasks }) => {
         return (
             <TaskItem
                 key={item.id}
-                task={item.title}
-                done={item.done}
+                task={item.taskName}
+                done={item.status}
                 loading={item.loading}
             />
         );
     });
 
     const element = loadingTasks ? (
-        <Loader size={150} hasBackground className={"storybook-task-list-loader"} />
+        <Loader
+            size={150}
+            hasBackground
+            className={"storybook-task-list-loader"}
+        />
     ) : (
         <div className={"storybook-task-list-item"}>{dynamicList}</div>
     );

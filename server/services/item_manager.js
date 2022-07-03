@@ -8,6 +8,7 @@ class ItemManager {
     }
 
     getItems = async () => {
+        console.log("get items from server route")
         return await Task.findAll();
     };
 

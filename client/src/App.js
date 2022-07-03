@@ -1,14 +1,29 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import {TaskAppContainer} from './components/TaskAppContainer/TaskAppContainer'
+import { TaskAppContainer } from "./components/TaskAppContainer/TaskAppContainer";
+import { getItems, postItem } from "./services/item_client";
 import "./index.css";
 import "monday-ui-react-core/dist/main.css";
 
 function App() {
-    return <div className="main">
-      <TaskAppContainer />
-    </div>;
+    const [tasks, setTasks] = React.useState([]);
+
+    React.useEffect(() => {
+        getAllTasksFromDB();
+    }, []);
+
+    const getAllTasksFromDB = async () => {
+        const ans = await getItems();
+        setTasks(ans);
+        return ans;
+    };
+
+    return (
+        <div className="main">
+            <TaskAppContainer tasksFromDB={tasks} addTask={postItem} />
+        </div>
+    );
 }
 
 export default App;

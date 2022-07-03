@@ -8,15 +8,20 @@ import { Flex, EditableHeading } from "monday-ui-react-core";
 import { UserInput } from "../UserInput/UserInput";
 import { TaskList } from "../TasksList/TaskList";
 
-export const TaskAppContainer = ({ tasksFromDB, loadingTasks }) => {
+
+export const TaskAppContainer = ({ tasksFromDB, loadingTasks, addTask }) => {
+
     return (
-        <Flex direction={Flex.directions.COLUMN} className={"task-app-container"}>
+        <Flex
+            direction={Flex.directions.COLUMN}
+            className={"task-app-container"}
+        >
             <EditableHeading
                 type="h1"
                 value="Todo App - MondayU"
                 placeholder={"Set tasks name"}
             />
-            <UserInput />
+            <UserInput onIconClick={addTask}/>
             <TaskList tasksItems={tasksFromDB} loadingTasks={loadingTasks} />
         </Flex>
     );
