@@ -5,13 +5,11 @@ export const getItems = async () => {
 };
 
 export const postItem = async (item) => {
-    console.log("first")
-    console.log(item)
-    // await fetch("/item", {
-    //     method: "POST",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({ taskName: item }),
-    // });
+    await fetch("/item", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ taskName: item }),
+    });
 };
 
 export const updateItem = async (item) => {

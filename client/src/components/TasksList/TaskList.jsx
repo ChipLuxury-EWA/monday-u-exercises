@@ -6,7 +6,7 @@ import "./tasksList.css";
 import "monday-ui-react-core/dist/main.css";
 import { Loader } from "monday-ui-react-core";
 
-export const TaskList = ({ tasksItems, loadingTasks }) => {
+export const TaskList = ({ tasksItems, loadingTasks, deleteTask }) => {
     const dynamicList = tasksItems.map((item) => {
         return (
             <TaskItem
@@ -14,6 +14,10 @@ export const TaskList = ({ tasksItems, loadingTasks }) => {
                 task={item.taskName}
                 done={item.status}
                 loading={item.loading}
+                item={item}
+                // onCheckClick={}
+                onDeleteClick={deleteTask}
+                // onChange={}
             />
         );
     });

@@ -18,6 +18,7 @@ export const TaskItem = ({
     onDeleteClick,
     onChange,
     done,
+    item,
 }) => {
     // const [task, setTask] = React.useState("")
 
@@ -40,7 +41,7 @@ export const TaskItem = ({
             </Flex>
             <Flex>
                 <IconButton icon={Check} onClick={onCheckClick} />
-                <IconButton icon={Delete} onClick={onDeleteClick} />
+                <IconButton icon={Delete} onClick={() => onDeleteClick(item)} />
             </Flex>
         </Flex>
     );
