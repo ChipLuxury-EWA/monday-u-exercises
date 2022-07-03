@@ -19,12 +19,11 @@ export const updateItem = async (item) => {
     if (!item.status) bodyMessage.done = new Date(); // send done date just when mark task done (*false* -> true)
     bodyMessage.taskName = item.taskName;
 
-    console.log(bodyMessage)
-    // await fetch("/item", {
-    //     method: "PUT",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify(bodyMessage),
-    // });
+    await fetch("/item", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(bodyMessage),
+    });
 };
 
 export const deleteItem = async (item) => {

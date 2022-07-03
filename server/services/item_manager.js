@@ -8,7 +8,7 @@ class ItemManager {
     }
 
     getItems = async () => {
-        console.log("get items from server route")
+        console.log("get items from server route");
         return await Task.findAll();
     };
 
@@ -69,7 +69,7 @@ class ItemManager {
     updateItem = async (item) => {
         console.log(`Update item ${item.id} status to ${item.status}`);
         const ans = await Task.update(
-            { status: item.status, done: item.done },
+            { status: item.status, done: item.done, taskName: item.taskName },
             { where: { id: item.id } }
         );
         return `updated rows: ${ans}`;
