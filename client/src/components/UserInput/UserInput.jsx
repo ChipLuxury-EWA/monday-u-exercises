@@ -6,7 +6,13 @@ import { TextField } from "monday-ui-react-core";
 import { Add } from "monday-ui-react-core/dist/allIcons";
 import "monday-ui-react-core/dist/main.css";
 
-export const UserInput = ({ loading, onIconClick, value, onChange }) => {
+export const UserInput = ({
+    loading,
+    onIconClick,
+    value,
+    onChange,
+    updateApp,
+}) => {
     const [task, setTask] = React.useState(value);
     return (
         <>
@@ -19,7 +25,10 @@ export const UserInput = ({ loading, onIconClick, value, onChange }) => {
                     setTask(value);
                     onChange(value);
                 }}
-                onIconClick={() => onIconClick(task)}
+                onIconClick={async () => {
+                    await onIconClick(task);
+                    updateApp();
+                }}
                 clearOnIconClick={true}
                 size={TextField.sizes.LARGE}
                 autoFocus={true}

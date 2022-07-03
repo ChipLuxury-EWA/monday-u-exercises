@@ -6,7 +6,7 @@ const main = async () => {
     const app = express();
     app.use(express.json());
 
-    // app.use(express.static(path.join(__dirname, "dist")));
+    app.use(express.static(path.join(__dirname, "./client/build")));
     app.use("/", api);
 
     const port = process.env.PORT || "3042";

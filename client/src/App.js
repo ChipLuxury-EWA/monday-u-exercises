@@ -2,7 +2,12 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { TaskAppContainer } from "./components/TaskAppContainer/TaskAppContainer";
-import { getItems, postItem, updateItem, deleteItem } from "./services/item_client";
+import {
+    getItems,
+    postItem,
+    updateItem,
+    deleteItem,
+} from "./services/item_client";
 import "./index.css";
 import "monday-ui-react-core/dist/main.css";
 
@@ -26,7 +31,7 @@ function App() {
                 addTask={postItem}
                 deleteTask={deleteItem}
                 updateItem={updateItem}
-
+                updateApp={getAllTasksFromDB}
             />
         </div>
     );

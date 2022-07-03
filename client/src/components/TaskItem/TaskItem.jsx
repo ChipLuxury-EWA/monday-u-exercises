@@ -19,9 +19,8 @@ export const TaskItem = ({
     onChange,
     done,
     item,
+    updateApp,
 }) => {
-    // const [task, setTask] = React.useState("")
-
     const loaderIcon = loading ? <Loader size={Loader.sizes.SMALL} /> : "";
     const markAsDone = done ? "storybook-task-item--done" : "";
     return (
@@ -35,9 +34,10 @@ export const TaskItem = ({
                     type="h6"
                     size={EditableHeading.sizes.SMALL}
                     value={task}
-                    onFinishEditing={(value) => {
+                    onFinishEditing={async (value) => {
                         item.taskName = value;
-                        onChange(item);
+                        await onChange(item);
+                        updateApp();
                     }}
                 />
                 {loaderIcon}
@@ -45,12 +45,19 @@ export const TaskItem = ({
             <Flex>
                 <IconButton
                     icon={Check}
-                    onClick={() => {
+                    onClick={async () => {
                         item.status = !item.status;
-                        onCheckClick(item);
+                        await onCheckClick(item);
+                        updateApp();
                     }}
                 />
-                <IconButton icon={Delete} onClick={() => onDeleteClick(item)} />
+                <IconButton
+                    icon={Delete}
+                    onClick={async () => {
+                        await onDeleteClick(item);
+                        updateApp()
+                    }}
+                />
             </Flex>
         </Flex>
     );
