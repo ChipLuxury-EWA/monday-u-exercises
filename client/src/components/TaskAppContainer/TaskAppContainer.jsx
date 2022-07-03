@@ -13,6 +13,7 @@ export const TaskAppContainer = ({
     loadingTasks,
     addTask,
     deleteTask,
+    updateItem,
 }) => {
     return (
         <Flex
@@ -25,7 +26,12 @@ export const TaskAppContainer = ({
                 placeholder={"Set tasks name"}
             />
             <UserInput onIconClick={addTask} />
-            <TaskList tasksItems={tasksFromDB} loadingTasks={loadingTasks} deleteTask={deleteTask} />
+            <TaskList
+                tasksItems={tasksFromDB}
+                loadingTasks={loadingTasks}
+                deleteTask={deleteTask}
+                updateItem={updateItem}
+            />
         </Flex>
     );
 };

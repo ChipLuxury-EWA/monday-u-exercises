@@ -35,12 +35,21 @@ export const TaskItem = ({
                     type="h6"
                     size={EditableHeading.sizes.SMALL}
                     value={task}
-                    onFinishEditing={onChange}
+                    onFinishEditing={(value) => {
+                        item.taskName = value;
+                        onChange(item);
+                    }}
                 />
                 {loaderIcon}
             </Flex>
             <Flex>
-                <IconButton icon={Check} onClick={onCheckClick} />
+                <IconButton
+                    icon={Check}
+                    onClick={() => {
+                        item.status = !item.status;
+                        onCheckClick(item);
+                    }}
+                />
                 <IconButton icon={Delete} onClick={() => onDeleteClick(item)} />
             </Flex>
         </Flex>
