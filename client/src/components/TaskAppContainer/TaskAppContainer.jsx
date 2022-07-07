@@ -8,14 +8,24 @@ import { Flex, EditableHeading } from "monday-ui-react-core";
 import { UserInput } from "../UserInput/UserInput";
 import { TaskList } from "../TasksList/TaskList";
 
+import { useDispatch, useSelector } from "react-redux";
+import { listOfTasks } from "../../redux/actions/task.actions";
+
 export const TaskAppContainer = ({
-    tasksFromDB,
-    loadingTasks,
     addTask,
     deleteTask,
     updateItem,
-    updateApp
+    updateApp,
 }) => {
+    const dispatch = useDispatch();
+
+    const taskList = useSelector((state) => state.taskList);
+    const { loading, error, tasks } = taskList;
+
+    React.useEffect(() => {
+        dispatch(listOfTasks());
+    }, [dispatch]);
+
     return (
         <Flex
             direction={Flex.directions.COLUMN}
@@ -28,8 +38,8 @@ export const TaskAppContainer = ({
             />
             <UserInput onIconClick={addTask} updateApp={updateApp} />
             <TaskList
-                tasksItems={tasksFromDB}
-                loadingTasks={loadingTasks}
+                tasksItems={tasks}
+                loadingTasks={loading}
                 deleteTask={deleteTask}
                 updateItem={updateItem}
                 updateApp={updateApp}

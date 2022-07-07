@@ -5,7 +5,6 @@ import { TaskAppContainer } from "./components/TaskAppContainer/TaskAppContainer
 import { Header } from "./components/Header";
 
 import {
-    getItems,
     postItem,
     updateItem,
     deleteItem,
@@ -14,28 +13,15 @@ import "./index.css";
 import "monday-ui-react-core/dist/main.css";
 
 function App() {
-    const [tasks, setTasks] = React.useState([]);
-
-    React.useEffect(() => {
-        getAllTasksFromDB();
-    }, []);
-
-    const getAllTasksFromDB = async () => {
-        const ans = await getItems();
-        setTasks(ans);
-        return ans;
-    };
 
     return (
         <Router>
             <Header />
             <div className="main">
                 <TaskAppContainer
-                    tasksFromDB={tasks}
                     addTask={postItem}
                     deleteTask={deleteItem}
                     updateItem={updateItem}
-                    updateApp={getAllTasksFromDB}
                 />
             </div>
         </Router>
