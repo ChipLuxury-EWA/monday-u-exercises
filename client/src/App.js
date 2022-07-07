@@ -28,7 +28,7 @@ function App() {
 
     return (
         <Router>
-        <Header />
+            <Header />
             <div className="main">
                 <TaskAppContainer
                     tasksFromDB={tasks}
