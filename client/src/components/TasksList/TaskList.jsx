@@ -11,7 +11,7 @@ export const TaskList = ({
     loadingTasks,
     deleteTask,
     updateItem,
-    updateApp,
+    afterChangesMade,
 }) => {
     const dynamicList = tasksItems.map((item) => {
         return (
@@ -24,7 +24,7 @@ export const TaskList = ({
                 onCheckClick={updateItem}
                 onDeleteClick={deleteTask}
                 onChange={updateItem}
-                updateApp={updateApp}
+                afterChangesMade={afterChangesMade}
             />
         );
     });

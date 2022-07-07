@@ -15,7 +15,7 @@ export const TaskAppContainer = ({
     addTask,
     deleteTask,
     updateItem,
-    updateApp,
+    afterChangesMade,
 }) => {
     const dispatch = useDispatch();
 
@@ -36,13 +36,13 @@ export const TaskAppContainer = ({
                 value="Todo App - MondayU"
                 placeholder={"Set tasks name"}
             />
-            <UserInput onIconClick={addTask} updateApp={updateApp} />
+            <UserInput onIconClick={addTask} afterChangesMade={afterChangesMade} />
             <TaskList
                 tasksItems={tasks}
                 loadingTasks={loading}
                 deleteTask={deleteTask}
                 updateItem={updateItem}
-                updateApp={updateApp}
+                afterChangesMade={afterChangesMade}
             />
         </Flex>
     );
