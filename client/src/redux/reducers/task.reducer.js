@@ -23,7 +23,7 @@ export const taskListReducer = (state = { tasks: [] }, action) => {
 export const addTaskReducer = (state = {}, action) => {
     switch (action.type) {
         case ADD_TASK_REQUEST:
-            return { loading: true };
+            return { loading: true, ...state };
         case ADD_TASK_SUCCESS:
             return { loading: false, tasks: action.payload };
         case ADD_TASK_FAILED:
