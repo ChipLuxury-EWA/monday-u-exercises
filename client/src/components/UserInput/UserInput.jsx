@@ -6,14 +6,17 @@ import { TextField } from "monday-ui-react-core";
 import { Add } from "monday-ui-react-core/dist/allIcons";
 import "monday-ui-react-core/dist/main.css";
 
-export const UserInput = ({
-    loading,
-    onIconClick,
-    value,
-    onChange,
-    updateApp,
-}) => {
+import { useDispatch } from "react-redux";
+import { addTask } from "../../redux/actions/task.actions";
+
+export const UserInput = ({ loading, onIconClick, value, onChange }) => {
     const [task, setTask] = React.useState(value);
+    const dispatch = useDispatch();
+
+    const addTaskToDb = (task) => {
+        dispatch(addTask(task));
+    };
+
     return (
         <>
             <TextField
@@ -25,10 +28,7 @@ export const UserInput = ({
                     setTask(value);
                     onChange(value);
                 }}
-                onIconClick={async () => {
-                    await onIconClick(task);
-                    updateApp();
-                }}
+                onIconClick={() => addTaskToDb(task)}
                 clearOnIconClick={true}
                 size={TextField.sizes.LARGE}
                 autoFocus={true}

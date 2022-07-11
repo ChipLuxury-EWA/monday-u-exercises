@@ -25,5 +25,5 @@ DELETE http://localhost:3042/item HTTP/1.1
 content-type: application/json
 
 {
-    "id": "1"
+    "id": "123"
 }

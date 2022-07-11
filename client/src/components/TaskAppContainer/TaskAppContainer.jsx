@@ -9,21 +9,18 @@ import { UserInput } from "../UserInput/UserInput";
 import { TaskList } from "../TasksList/TaskList";
 
 import { useDispatch, useSelector } from "react-redux";
-import { listOfTasks } from "../../redux/actions/task.actions";
+import { getAllTasks, addTask, deleteTask, changeTask } from "../../redux/actions/task.actions";
 
-export const TaskAppContainer = ({
-    addTask,
-    deleteTask,
-    updateItem,
-    afterChangesMade,
-}) => {
+
+
+export const TaskAppContainer = ({}) => {
     const dispatch = useDispatch();
 
     const taskList = useSelector((state) => state.taskList);
     const { loading, error, tasks } = taskList;
 
     React.useEffect(() => {
-        dispatch(listOfTasks());
+        dispatch(getAllTasks());
     }, [dispatch]);
 
     return (
@@ -36,13 +33,12 @@ export const TaskAppContainer = ({
                 value="Todo App - MondayU"
                 placeholder={"Set tasks name"}
             />
-            <UserInput onIconClick={addTask} afterChangesMade={afterChangesMade} />
+            <UserInput />
             <TaskList
                 tasksItems={tasks}
                 loadingTasks={loading}
-                deleteTask={deleteTask}
-                updateItem={updateItem}
-                afterChangesMade={afterChangesMade}
+                deleteTask={dispatch(deleteTask)}
+                updateItem={dispatch(changeTask)}
             />
         </Flex>
     );
