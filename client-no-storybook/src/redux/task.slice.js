@@ -7,7 +7,7 @@ import {
 } from "../services/item_client";
 
 export const taskSlice = createSlice({
-    name: taskSlice,
+    name: "taskSlice",
     initialState: { value: [] },
     reducers: {
         getAllTasks: async (state) => {
