@@ -9,16 +9,16 @@ import "monday-ui-react-core/dist/main.css";
 import { UserInput } from "./UserInput";
 import { TaskList } from "./TaskList";
 
-import { getAllTasks } from "../redux/task.slice";
+import { getAllTasks, addTask } from "../redux/task.slice";
 
 export const TaskAppContainer = ({}) => {
     const dispatch = useDispatch();
-    const { list, loading, status } = useSelector((state) => state.tasks);
+
+    const {read, create} = useSelector((state) => state.tasks);
 
     React.useEffect(() => {
         dispatch(getAllTasks());
     }, [dispatch]);
-    
 
     return (
         <Flex
@@ -32,12 +32,11 @@ export const TaskAppContainer = ({}) => {
             />
             <UserInput onIconClick={() => console.log("fii")} />
             <TaskList
-                tasksItems={list}
-                loadingTasks={loading}
+                tasksItems={read.list}
+                loadingTasks={read.loader}
                 // deleteTask={deleteTask}
                 // updateItem={updateItem}
             />
-
         </Flex>
     );
 };
