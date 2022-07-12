@@ -1,21 +1,25 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import "../css/tasksAppContainer.css";
-
-import "monday-ui-react-core/dist/main.css";
 import { Flex, EditableHeading } from "monday-ui-react-core";
+
+import "../css/tasksAppContainer.css";
+import "monday-ui-react-core/dist/main.css";
 
 import { UserInput } from "./UserInput";
 import { TaskList } from "./TaskList";
 
-export const TaskAppContainer = ({
-    tasksFromDB,
-    loadingTasks,
-    addTask,
-    deleteTask,
-    updateItem,
-    updateApp
-}) => {
+import { getAllTasks } from "../redux/task.slice";
+
+export const TaskAppContainer = ({}) => {
+    const dispatch = useDispatch();
+    const { list, loading, status } = useSelector((state) => state.tasks);
+
+    React.useEffect(() => {
+        dispatch(getAllTasks());
+    }, [dispatch]);
+    
+
     return (
         <Flex
             direction={Flex.directions.COLUMN}
@@ -26,23 +30,18 @@ export const TaskAppContainer = ({
                 value="Todo App - MondayU"
                 placeholder={"Set tasks name"}
             />
-            <UserInput onIconClick={addTask} updateApp={updateApp} />
+            <UserInput onIconClick={() => console.log("fii")} />
             <TaskList
-                tasksItems={tasksFromDB}
-                loadingTasks={loadingTasks}
-                deleteTask={deleteTask}
-                updateItem={updateItem}
-                updateApp={updateApp}
+                tasksItems={list}
+                loadingTasks={loading}
+                // deleteTask={deleteTask}
+                // updateItem={updateItem}
             />
+
         </Flex>
     );
 };
 
-TaskAppContainer.propTypes = {
-    tasksFromDB: PropTypes.array,
-    loadingTasks: PropTypes.bool,
-};
+TaskAppContainer.propTypes = {};
 
-TaskAppContainer.defaultProps = {
-    loadingTasks: false,
-};
+TaskAppContainer.defaultProps = {};

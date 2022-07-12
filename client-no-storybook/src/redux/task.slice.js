@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
     getItems,
     postItem,
@@ -6,28 +6,33 @@ import {
     deleteItem,
 } from "../services/item_client";
 
+export const getAllTasks = createAsyncThunk("tasks/getAll", async () => {
+    return await getItems();
+});
+
+
+
+// https://www.youtube.com/watch?v=xtD4YMKWI7w&ab_channel=Rowadz
+
 export const taskSlice = createSlice({
-    name: "taskSlice",
-    initialState: { value: [] },
-    reducers: {
-        getAllTasks: async (state) => {
-            state.value = await getItems();
+    name: "tasks",
+    initialState: { list: [], status: null },
+    extraReducers: {
+        [getAllTasks.pending]: (state, action) => {
+            state.loading = true;
+            state.status = "loading";
         },
-        addTask: async (state, action) => {
-            postItem(action.payload);
-            state.value = await getItems();
+        [getAllTasks.fulfilled]: (state, action) => {
+            state.loading = false;
+            state.status = "success";
+            state.list = action.payload;
         },
-        updateTask: async (state, action) => {
-            updateItem(action.payload);
-            state.value = await getItems();
+        [getAllTasks.rejected]: (state, action) => {
+            state.loading = false;
+            state.status = "failed";
         },
-        deleteTask: async (state, action) => {
-            deleteItem(action.payload);
-            state.value = await getItems();
-        },
+        
     },
 });
 
-export const { getAllTasks, addTask, updateTask, deleteTask } =
-    taskSlice.actions;
 export default taskSlice.reducer;
