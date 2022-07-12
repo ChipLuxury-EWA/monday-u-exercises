@@ -30,7 +30,7 @@ export const TaskAppContainer = ({}) => {
                 value="Todo App - MondayU"
                 placeholder={"Set tasks name"}
             />
-            <UserInput onIconClick={() => console.log("fii")} />
+            <UserInput onIconClick={(task) => dispatch(addTask(task))} loading={create.loader} />
             <TaskList
                 tasksItems={read.list}
                 loadingTasks={read.loader}

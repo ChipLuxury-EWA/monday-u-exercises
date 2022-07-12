@@ -5,6 +5,7 @@ import "../css/userInput.css";
 import { TextField } from "monday-ui-react-core";
 import { Add } from "monday-ui-react-core/dist/allIcons";
 import "monday-ui-react-core/dist/main.css";
+import { addTask } from "../redux/task.slice";
 
 export const UserInput = ({
     loading,
@@ -25,9 +26,8 @@ export const UserInput = ({
                     setTask(value);
                     onChange(value);
                 }}
-                onIconClick={async () => {
-                    await onIconClick(task);
-                    updateApp();
+                onIconClick={() => {
+                    onIconClick(task);
                 }}
                 clearOnIconClick={true}
                 size={TextField.sizes.LARGE}
