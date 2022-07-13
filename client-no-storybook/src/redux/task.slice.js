@@ -31,7 +31,6 @@ export const deleteTask = createAsyncThunk(
 export const updateTask = createAsyncThunk(
     "tasks/updateTask",
     async (task, { dispatch }) => {
-        console.log(task)
         await updateItem(task);
         dispatch(getAllTasks());
         return;
@@ -44,9 +43,9 @@ export const taskSlice = createSlice({
     name: "tasks",
     initialState: {
         read: { list: [], status: null },
-        create: { status: null, loading: null },
-        delete: { status: null, loading: null },
-        update: { status: null, loading: null },
+        create: { status: null, loader: null },
+        delete: { status: null, loader: null },
+        update: { status: null, loader: null },
     },
     extraReducers: {
         [getAllTasks.pending]: (state, action) => {
@@ -75,7 +74,7 @@ export const taskSlice = createSlice({
             state.create.loader = false;
             state.create.status = "failed";
         },
-        
+
         [deleteTask.pending]: (state, action) => {
             state.delete.loader = true;
             state.delete.status = "loading";

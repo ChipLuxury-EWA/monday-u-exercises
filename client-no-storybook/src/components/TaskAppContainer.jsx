@@ -14,7 +14,7 @@ import { getAllTasks, addTask, deleteTask, updateTask } from "../redux/task.slic
 export const TaskAppContainer = ({}) => {
     const dispatch = useDispatch();
 
-    const {read, create} = useSelector((state) => state.tasks);
+    const {read, create, update} = useSelector((state) => state.tasks);
 
     React.useEffect(() => {
         dispatch(getAllTasks());
@@ -34,6 +34,7 @@ export const TaskAppContainer = ({}) => {
             <TaskList
                 tasksItems={read.list}
                 loadingTasks={read.loader}
+                taskLoader={update.loader}
                 deleteTask={(task) => dispatch(deleteTask(task))}
                 updateItem={(task)=> dispatch(updateTask(task))}
             />

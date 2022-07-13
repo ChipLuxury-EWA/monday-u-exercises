@@ -11,8 +11,8 @@ import {
 import { Check, Delete } from "monday-ui-react-core/dist/allIcons";
 import "monday-ui-react-core/dist/main.css";
 
-export const TaskItem = ({ onCheckClick, onDeleteClick, onChange, item }) => {
-    const loaderIcon = item.loading ? <Loader size={Loader.sizes.SMALL} /> : "";
+export const TaskItem = ({ onCheckClick, onDeleteClick, onChange, item, loading }) => {
+    const loaderIcon = loading ? <Loader size={Loader.sizes.SMALL} /> : "";
     const markAsDone = item.status ? "storybook-task-item--done" : "";
 
     return (

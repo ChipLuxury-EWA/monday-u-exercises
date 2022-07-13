@@ -9,6 +9,7 @@ import { Loader } from "monday-ui-react-core";
 export const TaskList = ({
     tasksItems,
     loadingTasks,
+    taskLoader,
     deleteTask,
     updateItem,
 }) => {
@@ -16,7 +17,7 @@ export const TaskList = ({
         return (
             <TaskItem
                 key={item.id}
-                loading={item.loading}
+                loading={taskLoader}
                 item={item}
                 onCheckClick={updateItem}
                 onChange={updateItem}
@@ -41,9 +42,11 @@ export const TaskList = ({
 TaskList.propTypes = {
     tasksItems: PropTypes.array,
     loadingTasks: PropTypes.bool,
+    taskLoader: PropTypes.bool,
 };
 
 TaskList.defaultProps = {
     tasksItems: [],
-    loadingTasks: false,
+    loadingTask: false,
+    taskLoader: false,
 };
