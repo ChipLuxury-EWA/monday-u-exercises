@@ -31,6 +31,7 @@ export const deleteTask = createAsyncThunk(
 export const updateTask = createAsyncThunk(
     "tasks/updateTask",
     async (task, { dispatch }) => {
+        console.log(task)
         await updateItem(task);
         dispatch(getAllTasks());
         return;

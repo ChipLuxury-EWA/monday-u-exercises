@@ -15,7 +15,6 @@ export const TaskItem = ({ onCheckClick, onDeleteClick, onChange, item }) => {
     const loaderIcon = item.loading ? <Loader size={Loader.sizes.SMALL} /> : "";
     const markAsDone = item.status ? "storybook-task-item--done" : "";
 
-    const [task, setTask] = React.useState(item);
     return (
         <Flex
             className={["storybook-task-item", markAsDone].join(" ")}
@@ -28,8 +27,7 @@ export const TaskItem = ({ onCheckClick, onDeleteClick, onChange, item }) => {
                     size={EditableHeading.sizes.SMALL}
                     value={item.taskName}
                     onFinishEditing={(value) => {
-                        setTask({ ...task, taskName: value });
-                        onChange(task);
+                        onChange({ ...item, taskName: value });
                     }}
                 />
                 {loaderIcon}
@@ -38,8 +36,7 @@ export const TaskItem = ({ onCheckClick, onDeleteClick, onChange, item }) => {
                 <IconButton
                     icon={Check}
                     onClick={() => {
-                        item.status = !item.status;
-                        onCheckClick(item);
+                        onCheckClick({ ...item, status: !item.status });
                     }}
                 />
                 <IconButton icon={Delete} onClick={() => onDeleteClick(item)} />
