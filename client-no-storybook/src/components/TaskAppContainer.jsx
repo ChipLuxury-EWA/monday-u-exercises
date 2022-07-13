@@ -9,7 +9,7 @@ import "monday-ui-react-core/dist/main.css";
 import { UserInput } from "./UserInput";
 import { TaskList } from "./TaskList";
 
-import { getAllTasks, addTask } from "../redux/task.slice";
+import { getAllTasks, addTask, deleteTask, updateTask } from "../redux/task.slice";
 
 export const TaskAppContainer = ({}) => {
     const dispatch = useDispatch();
@@ -34,8 +34,8 @@ export const TaskAppContainer = ({}) => {
             <TaskList
                 tasksItems={read.list}
                 loadingTasks={read.loader}
-                // deleteTask={deleteTask}
-                // updateItem={updateItem}
+                deleteTask={(task) => dispatch(deleteTask(task))}
+                updateItem={(task)=> dispatch(updateTask(task))}
             />
         </Flex>
     );

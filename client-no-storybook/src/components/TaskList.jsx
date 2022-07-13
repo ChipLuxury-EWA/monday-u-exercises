@@ -16,13 +16,11 @@ export const TaskList = ({
         return (
             <TaskItem
                 key={item.id}
-                task={item.taskName}
-                done={item.status}
                 loading={item.loading}
                 item={item}
                 onCheckClick={updateItem}
-                onDeleteClick={deleteTask}
                 onChange={updateItem}
+                onDeleteClick={deleteTask}
             />
         );
     });

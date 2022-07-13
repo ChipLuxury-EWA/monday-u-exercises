@@ -12,7 +12,6 @@ export const UserInput = ({
     onIconClick,
     value,
     onChange,
-    updateApp,
 }) => {
     const [task, setTask] = React.useState(value);
     return (
