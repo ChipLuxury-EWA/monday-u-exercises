@@ -1,15 +1,10 @@
 ### The requirements:
 - [x] Use redux actions for communicating with the server (fetching items, adding a new item, etc.)
 - [x] Move the items from local component's state into the store
-- [ ] Handle failure of requests from the server
+- [x] Handle failure of requests from the server
 - [x] Handle loading
 - [ ] Add search
 - [ ] Add the ability to hide items that were marked as done or to show only them
-
-#### Your todo app is now:
-- Very easy to maintain and scale
-- Can use a vast amount of packages for almost every use-case
-- More performant out of the box
 
 ### Bonus
 - [ ] \* Debounce search
