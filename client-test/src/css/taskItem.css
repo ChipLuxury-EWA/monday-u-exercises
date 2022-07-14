@@ -1,0 +1,11 @@
+.storybook-task-item {
+    padding: 0px;
+    margin-bottom: var(--spacing-xs);
+    border: 1px solid black;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.storybook-task-item--done {
+    text-decoration: line-through;
+}
