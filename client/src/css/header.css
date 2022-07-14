@@ -1,0 +1,17 @@
+/* .tablist {
+    background-color: aqua;
+} */
+
+/* .tab-item {
+    background-color: aqua;
+} */
+
+/* fixing some css bugs overwriting vibe specs: */
+
+.tabs-list {
+    padding: 0px;
+}
+
+.tabs--wrapper.stretched .tabs-list .tab--wrapper .tab-inner {
+    width: unset;
+}
