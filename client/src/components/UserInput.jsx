@@ -45,6 +45,6 @@ UserInput.propTypes = {
 
 UserInput.defaultProps = {
     onIconClick: (value) => console.log("Clicked on add icon", value),
-    onChange: (value) => console.log(`Changed task to ${value}`),
+    onChange: (()=> {return}),
     loading: false,
 };
