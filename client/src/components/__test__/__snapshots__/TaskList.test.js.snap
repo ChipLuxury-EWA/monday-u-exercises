@@ -1,0 +1,527 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render with 3 todos 1`] = `
+<div
+  className="storybook-task-list-item"
+>
+  <div
+    className="components-Flex-Flex-module__container--ZDN6j components-Flex-Flex-module__justifySpaceBetween--lQ3bb components-Flex-Flex-module__alignCenter--oWj46 storybook-task-item "
+    style={
+      Object {
+        "gap": "0px",
+      }
+    }
+  >
+    <div
+      className="components-Flex-Flex-module__container--ZDN6j components-Flex-Flex-module__justifyStart--AqMmS components-Flex-Flex-module__alignCenter--oWj46"
+      style={
+        Object {
+          "gap": "0px",
+        }
+      }
+    >
+      <div
+        aria-label="test task 3 "
+        className="editable-heading--wrapper"
+        data-testid=""
+        id=""
+      >
+        <div
+          className="monday-style-clickable monday-style-clickable--disable-text-selection"
+          data-testid="clickable"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          role="input"
+          tabIndex="0"
+        >
+          <h6
+            aria-label=""
+            className="heading-component element-type-h6 size-small single-line-ellipsis suggest-edit-on-hover"
+            id=""
+          >
+            test task 3
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div
+      className="components-Flex-Flex-module__container--ZDN6j components-Flex-Flex-module__justifyStart--AqMmS components-Flex-Flex-module__alignCenter--oWj46"
+      style={
+        Object {
+          "gap": "0px",
+        }
+      }
+    >
+      <button
+        aria-disabled={false}
+        className="monday-style-button monday-style-button--size-medium monday-style-button--kind-tertiary monday-style-button--color-primary monday-style-button--no-side-padding"
+        data-testid="icon-button"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "height": "40px",
+            "justifyContent": "center",
+            "padding": 0,
+            "width": "40px",
+          }
+        }
+        type="button"
+      >
+        <svg
+          aria-hidden={true}
+          className="icon_component icon-button-padding icon_component--no-focus-style"
+          fill="currentColor"
+          height="24"
+          onClick={[Function]}
+          viewBox="0 0 20 20"
+          width="24"
+        >
+          <path
+            clipRule="evenodd"
+            d="M8.53033 14.2478L8 13.7175L7.46967 14.2478C7.76256 14.5407 8.23744 14.5407 8.53033 14.2478ZM8 12.6569L4.53033 9.18718C4.23744 8.89429 3.76256 8.89429 3.46967 9.18718C3.17678 9.48008 3.17678 9.95495 3.46967 10.2478L7.46967 14.2478L8 13.7175L8.53033 14.2478L16.2478 6.53033C16.5407 6.23743 16.5407 5.76256 16.2478 5.46967C15.955 5.17677 15.4801 5.17677 15.1872 5.46967L8 12.6569Z"
+            fill="currentColor"
+            fillRule="evenodd"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled={false}
+        className="monday-style-button monday-style-button--size-medium monday-style-button--kind-tertiary monday-style-button--color-primary monday-style-button--no-side-padding"
+        data-testid="icon-button"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "height": "40px",
+            "justifyContent": "center",
+            "padding": 0,
+            "width": "40px",
+          }
+        }
+        type="button"
+      >
+        <svg
+          aria-hidden={true}
+          className="icon_component icon-button-padding icon_component--no-focus-style"
+          fill="currentColor"
+          height="24"
+          onClick={[Function]}
+          viewBox="0 0 20 20"
+          width="24"
+        >
+          <path
+            clipRule="evenodd"
+            d="M8.30035 1.86462C7.77994 1.86462 7.29477 2.08976 6.94732 2.46719C6.60179 2.84253 6.41724 3.33927 6.41724 3.84552V4.32642H4.901H2.63477C2.22055 4.32642 1.88477 4.6622 1.88477 5.07642C1.88477 5.49063 2.22055 5.82642 2.63477 5.82642H4.151V16.1545C4.151 16.6608 4.33556 17.1575 4.68109 17.5328C5.02853 17.9103 5.51371 18.1354 6.03411 18.1354H13.9659C14.4863 18.1354 14.9715 17.9103 15.3189 17.5328C15.6645 17.1575 15.849 16.6608 15.849 16.1545V5.82642H17.3652C17.7794 5.82642 18.1152 5.49063 18.1152 5.07642C18.1152 4.6622 17.7794 4.32642 17.3652 4.32642H15.099H13.5828V3.84552C13.5828 3.33927 13.3982 2.84253 13.0527 2.46719C12.7053 2.08976 12.2201 1.86462 11.6997 1.86462H8.30035ZM7.16447 5.82642C7.16539 5.82642 7.16631 5.82642 7.16724 5.82642H12.8328C12.8337 5.82642 12.8346 5.82642 12.8356 5.82642H14.349V16.1545C14.349 16.3012 14.2948 16.4306 14.2153 16.5169C14.1378 16.6012 14.0465 16.6354 13.9659 16.6354H6.03411C5.95348 16.6354 5.86223 16.6012 5.78468 16.5169C5.7052 16.4306 5.651 16.3012 5.651 16.1545V5.82642H7.16447ZM12.0828 4.32642V3.84552C12.0828 3.69887 12.0286 3.56943 11.9491 3.4831C11.8716 3.39886 11.7803 3.36462 11.6997 3.36462H8.30035C8.21972 3.36462 8.12847 3.39886 8.05091 3.4831C7.97144 3.56943 7.91724 3.69887 7.91724 3.84552V4.32642L12.0828 4.32642Z"
+            fill="currentColor"
+            fillRule="evenodd"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div
+    className="components-Flex-Flex-module__container--ZDN6j components-Flex-Flex-module__justifySpaceBetween--lQ3bb components-Flex-Flex-module__alignCenter--oWj46 storybook-task-item "
+    style={
+      Object {
+        "gap": "0px",
+      }
+    }
+  >
+    <div
+      className="components-Flex-Flex-module__container--ZDN6j components-Flex-Flex-module__justifyStart--AqMmS components-Flex-Flex-module__alignCenter--oWj46"
+      style={
+        Object {
+          "gap": "0px",
+        }
+      }
+    >
+      <div
+        aria-label="test task 4 "
+        className="editable-heading--wrapper"
+        data-testid=""
+        id=""
+      >
+        <div
+          className="monday-style-clickable monday-style-clickable--disable-text-selection"
+          data-testid="clickable"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          role="input"
+          tabIndex="0"
+        >
+          <h6
+            aria-label=""
+            className="heading-component element-type-h6 size-small single-line-ellipsis suggest-edit-on-hover"
+            id=""
+          >
+            test task 4
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div
+      className="components-Flex-Flex-module__container--ZDN6j components-Flex-Flex-module__justifyStart--AqMmS components-Flex-Flex-module__alignCenter--oWj46"
+      style={
+        Object {
+          "gap": "0px",
+        }
+      }
+    >
+      <button
+        aria-disabled={false}
+        className="monday-style-button monday-style-button--size-medium monday-style-button--kind-tertiary monday-style-button--color-primary monday-style-button--no-side-padding"
+        data-testid="icon-button"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "height": "40px",
+            "justifyContent": "center",
+            "padding": 0,
+            "width": "40px",
+          }
+        }
+        type="button"
+      >
+        <svg
+          aria-hidden={true}
+          className="icon_component icon-button-padding icon_component--no-focus-style"
+          fill="currentColor"
+          height="24"
+          onClick={[Function]}
+          viewBox="0 0 20 20"
+          width="24"
+        >
+          <path
+            clipRule="evenodd"
+            d="M8.53033 14.2478L8 13.7175L7.46967 14.2478C7.76256 14.5407 8.23744 14.5407 8.53033 14.2478ZM8 12.6569L4.53033 9.18718C4.23744 8.89429 3.76256 8.89429 3.46967 9.18718C3.17678 9.48008 3.17678 9.95495 3.46967 10.2478L7.46967 14.2478L8 13.7175L8.53033 14.2478L16.2478 6.53033C16.5407 6.23743 16.5407 5.76256 16.2478 5.46967C15.955 5.17677 15.4801 5.17677 15.1872 5.46967L8 12.6569Z"
+            fill="currentColor"
+            fillRule="evenodd"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled={false}
+        className="monday-style-button monday-style-button--size-medium monday-style-button--kind-tertiary monday-style-button--color-primary monday-style-button--no-side-padding"
+        data-testid="icon-button"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "height": "40px",
+            "justifyContent": "center",
+            "padding": 0,
+            "width": "40px",
+          }
+        }
+        type="button"
+      >
+        <svg
+          aria-hidden={true}
+          className="icon_component icon-button-padding icon_component--no-focus-style"
+          fill="currentColor"
+          height="24"
+          onClick={[Function]}
+          viewBox="0 0 20 20"
+          width="24"
+        >
+          <path
+            clipRule="evenodd"
+            d="M8.30035 1.86462C7.77994 1.86462 7.29477 2.08976 6.94732 2.46719C6.60179 2.84253 6.41724 3.33927 6.41724 3.84552V4.32642H4.901H2.63477C2.22055 4.32642 1.88477 4.6622 1.88477 5.07642C1.88477 5.49063 2.22055 5.82642 2.63477 5.82642H4.151V16.1545C4.151 16.6608 4.33556 17.1575 4.68109 17.5328C5.02853 17.9103 5.51371 18.1354 6.03411 18.1354H13.9659C14.4863 18.1354 14.9715 17.9103 15.3189 17.5328C15.6645 17.1575 15.849 16.6608 15.849 16.1545V5.82642H17.3652C17.7794 5.82642 18.1152 5.49063 18.1152 5.07642C18.1152 4.6622 17.7794 4.32642 17.3652 4.32642H15.099H13.5828V3.84552C13.5828 3.33927 13.3982 2.84253 13.0527 2.46719C12.7053 2.08976 12.2201 1.86462 11.6997 1.86462H8.30035ZM7.16447 5.82642C7.16539 5.82642 7.16631 5.82642 7.16724 5.82642H12.8328C12.8337 5.82642 12.8346 5.82642 12.8356 5.82642H14.349V16.1545C14.349 16.3012 14.2948 16.4306 14.2153 16.5169C14.1378 16.6012 14.0465 16.6354 13.9659 16.6354H6.03411C5.95348 16.6354 5.86223 16.6012 5.78468 16.5169C5.7052 16.4306 5.651 16.3012 5.651 16.1545V5.82642H7.16447ZM12.0828 4.32642V3.84552C12.0828 3.69887 12.0286 3.56943 11.9491 3.4831C11.8716 3.39886 11.7803 3.36462 11.6997 3.36462H8.30035C8.21972 3.36462 8.12847 3.39886 8.05091 3.4831C7.97144 3.56943 7.91724 3.69887 7.91724 3.84552V4.32642L12.0828 4.32642Z"
+            fill="currentColor"
+            fillRule="evenodd"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div
+    className="components-Flex-Flex-module__container--ZDN6j components-Flex-Flex-module__justifySpaceBetween--lQ3bb components-Flex-Flex-module__alignCenter--oWj46 storybook-task-item "
+    style={
+      Object {
+        "gap": "0px",
+      }
+    }
+  >
+    <div
+      className="components-Flex-Flex-module__container--ZDN6j components-Flex-Flex-module__justifyStart--AqMmS components-Flex-Flex-module__alignCenter--oWj46"
+      style={
+        Object {
+          "gap": "0px",
+        }
+      }
+    >
+      <div
+        aria-label="test task 5 "
+        className="editable-heading--wrapper"
+        data-testid=""
+        id=""
+      >
+        <div
+          className="monday-style-clickable monday-style-clickable--disable-text-selection"
+          data-testid="clickable"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          role="input"
+          tabIndex="0"
+        >
+          <h6
+            aria-label=""
+            className="heading-component element-type-h6 size-small single-line-ellipsis suggest-edit-on-hover"
+            id=""
+          >
+            test task 5
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div
+      className="components-Flex-Flex-module__container--ZDN6j components-Flex-Flex-module__justifyStart--AqMmS components-Flex-Flex-module__alignCenter--oWj46"
+      style={
+        Object {
+          "gap": "0px",
+        }
+      }
+    >
+      <button
+        aria-disabled={false}
+        className="monday-style-button monday-style-button--size-medium monday-style-button--kind-tertiary monday-style-button--color-primary monday-style-button--no-side-padding"
+        data-testid="icon-button"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "height": "40px",
+            "justifyContent": "center",
+            "padding": 0,
+            "width": "40px",
+          }
+        }
+        type="button"
+      >
+        <svg
+          aria-hidden={true}
+          className="icon_component icon-button-padding icon_component--no-focus-style"
+          fill="currentColor"
+          height="24"
+          onClick={[Function]}
+          viewBox="0 0 20 20"
+          width="24"
+        >
+          <path
+            clipRule="evenodd"
+            d="M8.53033 14.2478L8 13.7175L7.46967 14.2478C7.76256 14.5407 8.23744 14.5407 8.53033 14.2478ZM8 12.6569L4.53033 9.18718C4.23744 8.89429 3.76256 8.89429 3.46967 9.18718C3.17678 9.48008 3.17678 9.95495 3.46967 10.2478L7.46967 14.2478L8 13.7175L8.53033 14.2478L16.2478 6.53033C16.5407 6.23743 16.5407 5.76256 16.2478 5.46967C15.955 5.17677 15.4801 5.17677 15.1872 5.46967L8 12.6569Z"
+            fill="currentColor"
+            fillRule="evenodd"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled={false}
+        className="monday-style-button monday-style-button--size-medium monday-style-button--kind-tertiary monday-style-button--color-primary monday-style-button--no-side-padding"
+        data-testid="icon-button"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "height": "40px",
+            "justifyContent": "center",
+            "padding": 0,
+            "width": "40px",
+          }
+        }
+        type="button"
+      >
+        <svg
+          aria-hidden={true}
+          className="icon_component icon-button-padding icon_component--no-focus-style"
+          fill="currentColor"
+          height="24"
+          onClick={[Function]}
+          viewBox="0 0 20 20"
+          width="24"
+        >
+          <path
+            clipRule="evenodd"
+            d="M8.30035 1.86462C7.77994 1.86462 7.29477 2.08976 6.94732 2.46719C6.60179 2.84253 6.41724 3.33927 6.41724 3.84552V4.32642H4.901H2.63477C2.22055 4.32642 1.88477 4.6622 1.88477 5.07642C1.88477 5.49063 2.22055 5.82642 2.63477 5.82642H4.151V16.1545C4.151 16.6608 4.33556 17.1575 4.68109 17.5328C5.02853 17.9103 5.51371 18.1354 6.03411 18.1354H13.9659C14.4863 18.1354 14.9715 17.9103 15.3189 17.5328C15.6645 17.1575 15.849 16.6608 15.849 16.1545V5.82642H17.3652C17.7794 5.82642 18.1152 5.49063 18.1152 5.07642C18.1152 4.6622 17.7794 4.32642 17.3652 4.32642H15.099H13.5828V3.84552C13.5828 3.33927 13.3982 2.84253 13.0527 2.46719C12.7053 2.08976 12.2201 1.86462 11.6997 1.86462H8.30035ZM7.16447 5.82642C7.16539 5.82642 7.16631 5.82642 7.16724 5.82642H12.8328C12.8337 5.82642 12.8346 5.82642 12.8356 5.82642H14.349V16.1545C14.349 16.3012 14.2948 16.4306 14.2153 16.5169C14.1378 16.6012 14.0465 16.6354 13.9659 16.6354H6.03411C5.95348 16.6354 5.86223 16.6012 5.78468 16.5169C5.7052 16.4306 5.651 16.3012 5.651 16.1545V5.82642H7.16447ZM12.0828 4.32642V3.84552C12.0828 3.69887 12.0286 3.56943 11.9491 3.4831C11.8716 3.39886 11.7803 3.36462 11.6997 3.36462H8.30035C8.21972 3.36462 8.12847 3.39886 8.05091 3.4831C7.97144 3.56943 7.91724 3.69887 7.91724 3.84552V4.32642L12.0828 4.32642Z"
+            fill="currentColor"
+            fillRule="evenodd"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`render with loading 1`] = `
+<div
+  className="storybook-task-list-item"
+/>
+`;
+
+exports[`render with no todos 1`] = `
+<div
+  className="storybook-task-list-item"
+/>
+`;
+
+exports[`render with one todo 1`] = `
+<div
+  className="storybook-task-list-item"
+>
+  <div
+    className="components-Flex-Flex-module__container--ZDN6j components-Flex-Flex-module__justifySpaceBetween--lQ3bb components-Flex-Flex-module__alignCenter--oWj46 storybook-task-item "
+    style={
+      Object {
+        "gap": "0px",
+      }
+    }
+  >
+    <div
+      className="components-Flex-Flex-module__container--ZDN6j components-Flex-Flex-module__justifyStart--AqMmS components-Flex-Flex-module__alignCenter--oWj46"
+      style={
+        Object {
+          "gap": "0px",
+        }
+      }
+    >
+      <div
+        aria-label="test task "
+        className="editable-heading--wrapper"
+        data-testid=""
+        id=""
+      >
+        <div
+          className="monday-style-clickable monday-style-clickable--disable-text-selection"
+          data-testid="clickable"
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          role="input"
+          tabIndex="0"
+        >
+          <h6
+            aria-label=""
+            className="heading-component element-type-h6 size-small single-line-ellipsis suggest-edit-on-hover"
+            id=""
+          >
+            test task
+          </h6>
+        </div>
+      </div>
+    </div>
+    <div
+      className="components-Flex-Flex-module__container--ZDN6j components-Flex-Flex-module__justifyStart--AqMmS components-Flex-Flex-module__alignCenter--oWj46"
+      style={
+        Object {
+          "gap": "0px",
+        }
+      }
+    >
+      <button
+        aria-disabled={false}
+        className="monday-style-button monday-style-button--size-medium monday-style-button--kind-tertiary monday-style-button--color-primary monday-style-button--no-side-padding"
+        data-testid="icon-button"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "height": "40px",
+            "justifyContent": "center",
+            "padding": 0,
+            "width": "40px",
+          }
+        }
+        type="button"
+      >
+        <svg
+          aria-hidden={true}
+          className="icon_component icon-button-padding icon_component--no-focus-style"
+          fill="currentColor"
+          height="24"
+          onClick={[Function]}
+          viewBox="0 0 20 20"
+          width="24"
+        >
+          <path
+            clipRule="evenodd"
+            d="M8.53033 14.2478L8 13.7175L7.46967 14.2478C7.76256 14.5407 8.23744 14.5407 8.53033 14.2478ZM8 12.6569L4.53033 9.18718C4.23744 8.89429 3.76256 8.89429 3.46967 9.18718C3.17678 9.48008 3.17678 9.95495 3.46967 10.2478L7.46967 14.2478L8 13.7175L8.53033 14.2478L16.2478 6.53033C16.5407 6.23743 16.5407 5.76256 16.2478 5.46967C15.955 5.17677 15.4801 5.17677 15.1872 5.46967L8 12.6569Z"
+            fill="currentColor"
+            fillRule="evenodd"
+          />
+        </svg>
+      </button>
+      <button
+        aria-disabled={false}
+        className="monday-style-button monday-style-button--size-medium monday-style-button--kind-tertiary monday-style-button--color-primary monday-style-button--no-side-padding"
+        data-testid="icon-button"
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "height": "40px",
+            "justifyContent": "center",
+            "padding": 0,
+            "width": "40px",
+          }
+        }
+        type="button"
+      >
+        <svg
+          aria-hidden={true}
+          className="icon_component icon-button-padding icon_component--no-focus-style"
+          fill="currentColor"
+          height="24"
+          onClick={[Function]}
+          viewBox="0 0 20 20"
+          width="24"
+        >
+          <path
+            clipRule="evenodd"
+            d="M8.30035 1.86462C7.77994 1.86462 7.29477 2.08976 6.94732 2.46719C6.60179 2.84253 6.41724 3.33927 6.41724 3.84552V4.32642H4.901H2.63477C2.22055 4.32642 1.88477 4.6622 1.88477 5.07642C1.88477 5.49063 2.22055 5.82642 2.63477 5.82642H4.151V16.1545C4.151 16.6608 4.33556 17.1575 4.68109 17.5328C5.02853 17.9103 5.51371 18.1354 6.03411 18.1354H13.9659C14.4863 18.1354 14.9715 17.9103 15.3189 17.5328C15.6645 17.1575 15.849 16.6608 15.849 16.1545V5.82642H17.3652C17.7794 5.82642 18.1152 5.49063 18.1152 5.07642C18.1152 4.6622 17.7794 4.32642 17.3652 4.32642H15.099H13.5828V3.84552C13.5828 3.33927 13.3982 2.84253 13.0527 2.46719C12.7053 2.08976 12.2201 1.86462 11.6997 1.86462H8.30035ZM7.16447 5.82642C7.16539 5.82642 7.16631 5.82642 7.16724 5.82642H12.8328C12.8337 5.82642 12.8346 5.82642 12.8356 5.82642H14.349V16.1545C14.349 16.3012 14.2948 16.4306 14.2153 16.5169C14.1378 16.6012 14.0465 16.6354 13.9659 16.6354H6.03411C5.95348 16.6354 5.86223 16.6012 5.78468 16.5169C5.7052 16.4306 5.651 16.3012 5.651 16.1545V5.82642H7.16447ZM12.0828 4.32642V3.84552C12.0828 3.69887 12.0286 3.56943 11.9491 3.4831C11.8716 3.39886 11.7803 3.36462 11.6997 3.36462H8.30035C8.21972 3.36462 8.12847 3.39886 8.05091 3.4831C7.97144 3.56943 7.91724 3.69887 7.91724 3.84552V4.32642L12.0828 4.32642Z"
+            fill="currentColor"
+            fillRule="evenodd"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+`;
