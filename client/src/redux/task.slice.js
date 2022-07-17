@@ -1,3 +1,4 @@
+// https://www.youtube.com/watch?v=xtD4YMKWI7w&ab_channel=Rowadz
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
     getItems,
@@ -37,16 +38,18 @@ export const updateTask = createAsyncThunk(
     }
 );
 
-// https://www.youtube.com/watch?v=xtD4YMKWI7w&ab_channel=Rowadz
 
-export const taskSlice = createSlice({
-    name: "tasks",
-    initialState: {
+// exporting fot test compression
+export const initialState = {
         read: { list: [], status: null },
         create: { status: null, loader: null },
         delete: { status: null, loader: null },
         update: { status: null, loader: null },
-    },
+    }
+
+export const taskSlice = createSlice({
+    name: "tasks",
+    initialState,
     extraReducers: {
         [getAllTasks.pending]: (state, action) => {
             state.read.loader = true;
