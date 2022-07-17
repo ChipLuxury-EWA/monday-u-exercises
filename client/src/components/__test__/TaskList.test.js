@@ -1,48 +1,39 @@
-import React from "react";
-import renderer from "react-test-renderer";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
+import userEvent from "@testing-library/user-event";
 import { TaskList } from "../TaskList";
 
-const tasks = [
+import { Provider } from "react-redux";
+import { store } from "../../redux/store";
+
+const items = [
     {
-        id: 2,
-        taskName: "test task",
+        id: 56,
+        taskName: "Take dog out for a walk",
         status: false,
+    },
+    {
+        id: 32,
+        taskName: "Do the dishes",
+        status: true,
     },
 ];
+const setup = () => {
+    render(
+        <Provider store={store}>
+            <TaskList tasksItems={items} />
+        </Provider>
+    );
+};
 
-const multyTasks = [
-    {
-        id: 3,
-        taskName: "test task 3",
-        status: false,
-    },
-    {
-        id: 4,
-        taskName: "test task 4",
-        status: false,
-    },
-    {
-        id: 5,
-        taskName: "test task 5",
-        status: false,
-    },
-];
-
-test("render with no todos", () => {
-    const tree = renderer.create(<TaskList />).toJSON();
-    expect(tree).toMatchSnapshot();
-});
-
-test("render with one todo", () => {
-    const tree = renderer.create(<TaskList tasksItems={tasks} />).toJSON();
-    expect(tree).toMatchSnapshot();
-});
-
-test("render with 3 todos", () => {
-    const tree = renderer.create(<TaskList tasksItems={multyTasks} />).toJSON();
-    expect(tree).toMatchSnapshot();
-});
-test("render with loading", () => {
-    const tree = renderer.create(<TaskList loading={true} />).toJSON();
-    expect(tree).toMatchSnapshot();
+test("should render both items( one done one not)", () => {
+    setup();
+    const task1 = screen.getByRole("heading", { name: items[0].taskName });
+    const task2 = screen.getByRole("heading", { name: items[1].taskName });
+    
+    const taskItem1 = task1.parentElement.parentElement.parentElement.parentElement;
+    const taskItem2 = task2.parentElement.parentElement.parentElement.parentElement;
+    
+    expect(taskItem1.classList.contains("storybook-task-item--done")).toBe(false)
+    expect(taskItem2.classList.contains("storybook-task-item--done")).toBe(true)
 });
