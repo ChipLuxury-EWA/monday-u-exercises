@@ -15,11 +15,14 @@ const items = [
 
 export const handlers = [
     rest.post("/item", (req, res, ctx) => {
-        console.log(`sending to DB server:`, req.json())
+        console.log(`sending to DB server:`, req.json());
         return res(ctx.status(200));
     }),
 
-    rest.get('/items', (req, res,ctx) => {
-        return res(ctx.json(items))
-    })
+    rest.get("/items", (req, res, ctx) => {
+        return res(
+            ctx.status(200),
+            ctx.json({items})
+        );
+    }),
 ];
