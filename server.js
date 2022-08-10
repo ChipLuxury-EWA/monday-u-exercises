@@ -1,6 +1,9 @@
 const express = require("express");
 const path = require("path");
 const api = require("./server/routes/api");
+const dotenv = require('dotenv');
+
+dotenv.config()
 
 const main = async () => {
     const app = express();
