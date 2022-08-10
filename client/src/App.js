@@ -13,6 +13,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<TaskAppContainer />} />
                     <Route path="/about" element={<About />} />
+                    <Route path="/timeline" element={<Timeline />} />
                 </Routes>
             </BrowserRouter>
         </div>

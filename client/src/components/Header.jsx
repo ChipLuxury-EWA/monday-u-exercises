@@ -13,6 +13,7 @@ const Header = () => {
             <TabList tabType="stretched">
                 <Tab onClick={() => navigate("/") } className="tab-item" >Tasks</Tab>
                 <Tab onClick={() => navigate("/about")}>About</Tab>
+                <Tab onClick={() => navigate("/timeline")}>About</Tab>
             </TabList>
         </div>
     );
